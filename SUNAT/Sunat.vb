@@ -382,7 +382,7 @@ Public Class Sunat
     Public Sub ReplaceFile(FileToMoveAndDelete As String, FileToReplace As String)
         File.Replace(FileToMoveAndDelete, FileToReplace, False)
     End Sub
-
+    'comesdfbskd
     Private Sub btngenerarResumen_Click(sender As Object, e As EventArgs) Handles btngenerarResumen.Click
         If dgvlista.Rows.Count > 0 Then
 

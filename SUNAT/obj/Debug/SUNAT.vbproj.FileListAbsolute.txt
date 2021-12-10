@@ -35,3 +35,7 @@ C:\Facturador\SUNAT\obj\Debug\SUNAT.EnviarCorreo.resources
 C:\Facturador\SUNAT\obj\Debug\SUNAT.Resources.resources
 C:\Facturador\SUNAT\obj\Debug\SUNAT.Sunat.resources
 C:\Facturador\SUNAT\obj\Debug\SUNAT.vbproj.GenerateResource.Cache
+C:\Users\SERVER\Desktop\FactPro\SUNAT\bin\Debug\SUNAT.exe.config
+C:\Users\SERVER\Desktop\FactPro\SUNAT\obj\Debug\SUNAT.exe
+C:\Users\SERVER\Desktop\FactPro\SUNAT\obj\Debug\SUNAT.xml
+C:\Users\SERVER\Desktop\FactPro\SUNAT\obj\Debug\SUNAT.pdb
