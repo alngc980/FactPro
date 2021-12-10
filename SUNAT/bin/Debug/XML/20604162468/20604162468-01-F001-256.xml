@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Invoice xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" xmlns:ccts="urn:un:unece:uncefact:documentation:2" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:ext="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2" xmlns:qdt="urn:oasis:names:specification:ubl:schema:xsd:QualifiedDatatypes-2" xmlns:udt="urn:un:unece:uncefact:data:specification:UnqualifiedDataTypesSchemaModule:2" xmlns="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2">
+	<ext:UBLExtensions>
+		<ext:UBLExtension> <ext:ExtensionContent><ds:Signature Id="SignSUNAT"><SignedInfo xmlns="http://www.w3.org/2000/09/xmldsig#"><CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" /><DigestValue>DUMb59Gwv627d1Wd9IYZBlVWZaA=</DigestValue></Reference></SignedInfo><SignatureValue xmlns="http://www.w3.org/2000/09/xmldsig#">QjhBxls2bx8pEU7kgBugFZWG1zwt8p4T6+mLXePqhdRik6CEE9M/AJVwwX2MkSK6lzOKAlYEisXIKKmaBqBzjCt7031LVSZnm8YPYmaZqpjJvagOgrX8bQuvXb5CQyyMnvKj5QC8o5MYCGUDv7jtx+shcD3ZgO1jHlMlpuXcTA6jMqv091IU7hJgmcEmFL9ZxTtGjgUg5a9qcPJY6S4XmXBVP7K1tHFrdGPG20aeWiVA0P8O5u7MfH2s64TsVwCp0IrYBU4Gx/D2HdElcKJLF72cComZxkrrW2cAu9YVlNbwDBSjdO2wpvQEoE36k/lww9iCgjbgApnhtFwTVfK6Ww==</SignatureValue><KeyInfo xmlns="http://www.w3.org/2000/09/xmldsig#"><X509Data><X509SubjectName>CN=||USO TRIBUTARIO|| GRUPO CANARIAS S.A.C. CDT 20604162468, OU=20604162468, OU=EREP_SUNAT_2020000037205, OID.2.5.4.97=NTRPE-20604162468, O=GRUPO CANARIAS S.A.C., L=IQUITOS, S=LORETO-MAYNAS, C=PE</X509SubjectName><X509Certificate>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</X509Certificate></X509Data></KeyInfo></ds:Signature></ext:ExtensionContent></ext:UBLExtension>
+	</ext:UBLExtensions>
+	<cbc:UBLVersionID>2.1</cbc:UBLVersionID>
+	<cbc:CustomizationID>2.0</cbc:CustomizationID>
+	<cbc:ID>F001-256</cbc:ID>
+	<cbc:IssueDate>2021-09-15</cbc:IssueDate>
+	<cbc:IssueTime>20:42:22.0000000-05:00</cbc:IssueTime>
+	<cbc:DueDate>2021-09-15</cbc:DueDate>
+	<cbc:InvoiceTypeCode listID="0101" listAgencyName="PE:SUNAT" listName="Tipo de Documento" name="Tipo de Operacion" listURI="urn:pe:gob:sunat:cpe:see:gem:catalogos:catalogo01" listSchemeURI="urn:pe:gob:sunat:cpe:see:gem:catalogos:catalogo51">01</cbc:InvoiceTypeCode>
+	<cbc:Note languageLocaleID="1000">VEINTICUATRO CON 50/100 SOLES</cbc:Note>
+	<cbc:DocumentCurrencyCode listID="ISO 4217 Alpha" listAgencyName="United Nations Economic Commission for Europe" listName="Currency">PEN</cbc:DocumentCurrencyCode>
+	<cac:Signature>
+		<cbc:ID>20604162468</cbc:ID>
+		<cbc:Note>Elaborado por Sistema de Emision Electronica HardSoft</cbc:Note>
+		<cac:SignatoryParty>
+			<cac:PartyIdentification>
+				<cbc:ID>20604162468</cbc:ID>
+			</cac:PartyIdentification>
+			<cac:PartyName>
+				<cbc:Name>GRUPO CANARIAS S.A.C.</cbc:Name>
+			</cac:PartyName>
+		</cac:SignatoryParty>
+		<cac:DigitalSignatureAttachment>
+			<cac:ExternalReference>
+				<cbc:URI>20604162468</cbc:URI>
+			</cac:ExternalReference>
+		</cac:DigitalSignatureAttachment>
+	</cac:Signature>
+	<cac:AccountingSupplierParty>
+		<cac:Party>
+			<cac:PartyIdentification>
+				<cbc:ID schemeID="6" schemeName="Documento de Identidad" schemeAgencyName="PE:SUNAT" schemeURI="urn:pe:gob:sunat:cpe:see:gem:catalogos:catalogo06">20604162468</cbc:ID>
+			</cac:PartyIdentification>
+			<cac:PartyName>
+				<cbc:Name>GRUPO CANARIAS S.A.C.</cbc:Name>
+			</cac:PartyName>
+			<cac:PartyLegalEntity>
+				<cbc:RegistrationName>GRUPO CANARIAS S.A.C.</cbc:RegistrationName>
+				<cac:RegistrationAddress>
+					<cbc:ID schemeName="Ubigeos" schemeAgencyName="PE:INEI">160101</cbc:ID>
+					<cbc:AddressTypeCode listAgencyName="PE:SUNAT" listName="Establecimientos anexos">0000</cbc:AddressTypeCode>
+					<cbc:CityName>LORETO</cbc:CityName>
+					<cbc:CountrySubentity>MAYNAS</cbc:CountrySubentity>
+					<cbc:District>IQUITOS</cbc:District>
+					<cac:AddressLine>
+						<cbc:Line>CALLE PEVAS 100</cbc:Line>
+					</cac:AddressLine>
+					<cac:Country>
+						<cbc:IdentificationCode listID="ISO 3166-1" listAgencyName="United Nations Economic Commission for Europe" listName="Country">PE</cbc:IdentificationCode>
+					</cac:Country>
+				</cac:RegistrationAddress>
+			</cac:PartyLegalEntity>
+		</cac:Party>
+	</cac:AccountingSupplierParty>
+	<cac:AccountingCustomerParty>
+		<cac:Party>
+			<cac:PartyIdentification>
+				<cbc:ID schemeID="6" schemeName="Documento de Identidad" schemeAgencyName="PE:SUNAT" schemeURI="urn:pe:gob:sunat:cpe:see:gem:catalogos:catalogo06">20600915682</cbc:ID>
+			</cac:PartyIdentification>
+			<cac:PartyLegalEntity>
+				<cbc:RegistrationName>HUASAI RESTAURANT EIRL</cbc:RegistrationName>
+			</cac:PartyLegalEntity>
+		</cac:Party>
+	</cac:AccountingCustomerParty>
+	<cac:PaymentTerms>
+		<cbc:ID>FormaPago</cbc:ID>
+		<cbc:PaymentMeansID>Contado</cbc:PaymentMeansID>
+	</cac:PaymentTerms>
+	<cac:TaxTotal>
+		<cbc:TaxAmount currencyID="PEN">0</cbc:TaxAmount>
+		<cac:TaxSubtotal>
+			<cbc:TaxableAmount currencyID="PEN">24.50</cbc:TaxableAmount>
+			<cbc:TaxAmount currencyID="PEN">0</cbc:TaxAmount>
+			<cac:TaxCategory>
+				<cac:TaxScheme>
+					<cbc:ID schemeName="Codigo de tributos" schemeAgencyName="PE:SUNAT" schemeURI="urn:pe:gob:sunat:cpe:see:gem:catalogos:catalogo05">9997</cbc:ID>
+					<cbc:Name>EXO</cbc:Name>
+					<cbc:TaxTypeCode>VAT</cbc:TaxTypeCode>
+				</cac:TaxScheme>
+			</cac:TaxCategory>
+		</cac:TaxSubtotal>
+	</cac:TaxTotal>
+	<cac:LegalMonetaryTotal>
+		<cbc:LineExtensionAmount currencyID="PEN">24.50</cbc:LineExtensionAmount>
+		<cbc:TaxInclusiveAmount currencyID="PEN">24.50</cbc:TaxInclusiveAmount>
+		<cbc:AllowanceTotalAmount currencyID="PEN">0</cbc:AllowanceTotalAmount>
+		<cbc:ChargeTotalAmount currencyID="PEN">0.00</cbc:ChargeTotalAmount>
+		<cbc:PrepaidAmount currencyID="PEN">0.00</cbc:PrepaidAmount>
+		<cbc:PayableAmount currencyID="PEN">24.50</cbc:PayableAmount>
+	</cac:LegalMonetaryTotal>
+	<cac:InvoiceLine>
+		<cbc:ID>1</cbc:ID>
+		<cbc:InvoicedQuantity unitCode="NIU" unitCodeListID="UN/ECE rec 20" unitCodeListAgencyName="United Nations Economic Commission for Europe">7.000000</cbc:InvoicedQuantity>
+		<cbc:LineExtensionAmount currencyID="PEN">24.50</cbc:LineExtensionAmount>
+		<cac:PricingReference>
+			<cac:AlternativeConditionPrice>
+				<cbc:PriceAmount currencyID="PEN">3.500</cbc:PriceAmount>
+				<cbc:PriceTypeCode listAgencyName="PE:SUNAT" listName="Tipo de Precio" listURI="urn:pe:gob:sunat:cpe:see:gem:catalogos:catalogo16">01</cbc:PriceTypeCode>
+			</cac:AlternativeConditionPrice>
+		</cac:PricingReference>
+		<cac:TaxTotal>
+			<cbc:TaxAmount currencyID="PEN">0</cbc:TaxAmount>
+			<cac:TaxSubtotal>
+				<cbc:TaxableAmount currencyID="PEN">24.50</cbc:TaxableAmount>
+				<cbc:TaxAmount currencyID="PEN">0.00</cbc:TaxAmount>
+				<cac:TaxCategory>
+					<cbc:Percent>0.00</cbc:Percent>
+					<cbc:TaxExemptionReasonCode listAgencyName="PE:SUNAT" listName="Afectacion del IGV" listURI="urn:pe:gob:sunat:cpe:see:gem:catalogos:catalogo07">20</cbc:TaxExemptionReasonCode>
+					<cac:TaxScheme>
+						<cbc:ID schemeName="Codigo de tributos" schemeAgencyName="PE:SUNAT" schemeURI="urn:pe:gob:sunat:cpe:see:gem:catalogos:catalogo05">9997</cbc:ID>
+						<cbc:Name>EXO</cbc:Name>
+						<cbc:TaxTypeCode>VAT</cbc:TaxTypeCode>
+					</cac:TaxScheme>
+				</cac:TaxCategory>
+			</cac:TaxSubtotal>
+		</cac:TaxTotal>
+		<cac:Item>
+			<cbc:Description>AGUA PURIFICADA AQUASOL 20L</cbc:Description>
+			<cac:SellersItemIdentification>
+				<cbc:ID>9275</cbc:ID>
+			</cac:SellersItemIdentification>
+			<cac:CommodityClassification>
+				<cbc:ItemClassificationCode listID="UNSPSC" listAgencyName="GS1 US" listName="Item Classification">25172405</cbc:ItemClassificationCode>
+			</cac:CommodityClassification>
+		</cac:Item>
+		<cac:Price>
+			<cbc:PriceAmount currencyID="PEN">3.50</cbc:PriceAmount>
+		</cac:Price>
+	</cac:InvoiceLine>
+</Invoice>

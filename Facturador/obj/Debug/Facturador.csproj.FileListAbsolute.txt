@@ -1,0 +1,109 @@
+c:\users\server\documents\visual studio 2015\Projects\Facturador\Facturador\bin\Debug\Facturador.exe.config
+c:\users\server\documents\visual studio 2015\Projects\Facturador\Facturador\bin\Debug\Facturador.exe
+c:\users\server\documents\visual studio 2015\Projects\Facturador\Facturador\bin\Debug\Facturador.pdb
+c:\users\server\documents\visual studio 2015\Projects\Facturador\Facturador\obj\Debug\Facturador.csprojResolveAssemblyReference.cache
+c:\users\server\documents\visual studio 2015\Projects\Facturador\Facturador\obj\Debug\Facturador.Properties.Resources.resources
+c:\users\server\documents\visual studio 2015\Projects\Facturador\Facturador\obj\Debug\Facturador.csproj.GenerateResource.Cache
+c:\users\server\documents\visual studio 2015\Projects\Facturador\Facturador\obj\Debug\Facturador.exe
+c:\users\server\documents\visual studio 2015\Projects\Facturador\Facturador\obj\Debug\Facturador.pdb
+c:\users\server\documents\visual studio 2015\Projects\Facturador\Facturador\obj\Debug\Facturador.FactSUNAT.resources
+c:\users\server\documents\visual studio 2015\Projects\Facturador\Facturador\bin\Debug\Newtonsoft.Json.dll
+c:\users\server\documents\visual studio 2015\Projects\Facturador\Facturador\bin\Debug\Newtonsoft.Json.xml
+D:\Desarrollo Programmer\Facturador\Facturador\bin\Debug\Facturador.exe.config
+D:\Desarrollo Programmer\Facturador\Facturador\obj\Debug\Facturador.exe
+D:\Desarrollo Programmer\Facturador\Facturador\obj\Debug\Facturador.pdb
+D:\Desarrollo Programmer\Facturador\Facturador\bin\Debug\Facturador.exe
+D:\Desarrollo Programmer\Facturador\Facturador\bin\Debug\Facturador.pdb
+D:\Desarrollo Programmer\Facturador\Facturador\obj\Debug\Facturador.csprojResolveAssemblyReference.cache
+D:\Desarrollo Programmer\Facturador\Facturador\obj\Debug\Facturador.FactSUNAT.resources
+D:\Desarrollo Programmer\Facturador\Facturador\obj\Debug\Facturador.Properties.Resources.resources
+D:\Desarrollo Programmer\Facturador\Facturador\obj\Debug\Facturador.csproj.GenerateResource.Cache
+D:\Desarrollo Programmer\Facturador\Facturador\obj\Debug\Facturador.EnviarCorreo.resources
+D:\Desarrollo Programmer\Facturador\Facturador\obj\Debug\c_sahrp.EnvioCorreo.resources
+D:\Disco D\Desarrollo Programmer\Facturador\Facturador\bin\Debug\Facturador.exe.config
+D:\Disco D\Desarrollo Programmer\Facturador\Facturador\obj\Debug\Facturador.exe
+D:\Disco D\Desarrollo Programmer\Facturador\Facturador\obj\Debug\Facturador.pdb
+D:\Disco D\Desarrollo Programmer\Facturador\Facturador\bin\Debug\Facturador.exe
+D:\Disco D\Desarrollo Programmer\Facturador\Facturador\bin\Debug\Facturador.pdb
+D:\Disco D\Desarrollo Programmer\Facturador\Facturador\bin\Debug\Newtonsoft.Json.xml
+D:\Disco D\Desarrollo Programmer\Facturador\Facturador\obj\Debug\Facturador.csprojResolveAssemblyReference.cache
+D:\Disco D\Desarrollo Programmer\Facturador\Facturador\obj\Debug\Facturador.EnviarCorreo.resources
+D:\Disco D\Desarrollo Programmer\Facturador\Facturador\obj\Debug\c_sahrp.EnvioCorreo.resources
+D:\Disco D\Desarrollo Programmer\Facturador\Facturador\obj\Debug\Facturador.FactSUNAT.resources
+D:\Disco D\Desarrollo Programmer\Facturador\Facturador\obj\Debug\Facturador.Properties.Resources.resources
+D:\Disco D\Desarrollo Programmer\Facturador\Facturador\obj\Debug\Facturador.csproj.GenerateResource.Cache
+D:\DESARROLLO PROGRAMMER\Facturador\Facturador\obj\Debug\Facturador.GeneradorTXT.resources
+D:\DESARROLLO PROGRAMMER\Facturador\Facturador\bin\Debug\Newtonsoft.Json.dll
+D:\DESARROLLO PROGRAMMER\Facturador\Facturador\bin\Debug\VB.exe
+D:\DESARROLLO PROGRAMMER\Facturador\Facturador\bin\Debug\VB.pdb
+D:\DESARROLLO PROGRAMMER\Facturador\Facturador\bin\Debug\VB.xml
+D:\DESARROLLO PROGRAMMER\Facturador\Facturador\obj\Debug\Facturador.CambioFecha.resources
+F:\D\DESARROLLO PROGRAMMER\Facturador\Facturador\bin\Debug\Facturador.exe.config
+F:\D\DESARROLLO PROGRAMMER\Facturador\Facturador\obj\Debug\Facturador.exe
+F:\D\DESARROLLO PROGRAMMER\Facturador\Facturador\obj\Debug\Facturador.pdb
+F:\D\DESARROLLO PROGRAMMER\Facturador\Facturador\bin\Debug\Facturador.exe
+F:\D\DESARROLLO PROGRAMMER\Facturador\Facturador\bin\Debug\Facturador.pdb
+F:\D\DESARROLLO PROGRAMMER\Facturador\Facturador\bin\Debug\Newtonsoft.Json.dll
+F:\D\DESARROLLO PROGRAMMER\Facturador\Facturador\bin\Debug\VB.exe
+F:\D\DESARROLLO PROGRAMMER\Facturador\Facturador\bin\Debug\VB.pdb
+F:\D\DESARROLLO PROGRAMMER\Facturador\Facturador\bin\Debug\VB.xml
+F:\D\DESARROLLO PROGRAMMER\Facturador\Facturador\obj\Debug\Facturador.csprojResolveAssemblyReference.cache
+F:\D\DESARROLLO PROGRAMMER\Facturador\Facturador\obj\Debug\Facturador.CambioFecha.resources
+F:\D\DESARROLLO PROGRAMMER\Facturador\Facturador\obj\Debug\Facturador.EnviarCorreo.resources
+F:\D\DESARROLLO PROGRAMMER\Facturador\Facturador\obj\Debug\c_sahrp.EnvioCorreo.resources
+F:\D\DESARROLLO PROGRAMMER\Facturador\Facturador\obj\Debug\Facturador.FactSUNAT.resources
+F:\D\DESARROLLO PROGRAMMER\Facturador\Facturador\obj\Debug\Facturador.GeneradorTXT.resources
+F:\D\DESARROLLO PROGRAMMER\Facturador\Facturador\obj\Debug\Facturador.Properties.Resources.resources
+F:\D\DESARROLLO PROGRAMMER\Facturador\Facturador\obj\Debug\Facturador.csproj.GenerateResource.Cache
+D:\1 Programs\DESARROLLO PROGRAMMER\Facturador\Facturador\bin\Debug\Facturador.exe.config
+D:\1 Programs\DESARROLLO PROGRAMMER\Facturador\Facturador\obj\Debug\Facturador.exe
+D:\1 Programs\DESARROLLO PROGRAMMER\Facturador\Facturador\obj\Debug\Facturador.pdb
+D:\1 Programs\DESARROLLO PROGRAMMER\Facturador\Facturador\bin\Debug\Facturador.exe
+D:\1 Programs\DESARROLLO PROGRAMMER\Facturador\Facturador\bin\Debug\Facturador.pdb
+D:\1 Programs\DESARROLLO PROGRAMMER\Facturador\Facturador\bin\Debug\Newtonsoft.Json.dll
+D:\1 Programs\DESARROLLO PROGRAMMER\Facturador\Facturador\bin\Debug\VB.exe
+D:\1 Programs\DESARROLLO PROGRAMMER\Facturador\Facturador\bin\Debug\VB.pdb
+D:\1 Programs\DESARROLLO PROGRAMMER\Facturador\Facturador\bin\Debug\VB.xml
+D:\1 Programs\DESARROLLO PROGRAMMER\Facturador\Facturador\obj\Debug\Facturador.csprojResolveAssemblyReference.cache
+D:\1 Programs\DESARROLLO PROGRAMMER\Facturador\Facturador\obj\Debug\Facturador.CambioFecha.resources
+D:\1 Programs\DESARROLLO PROGRAMMER\Facturador\Facturador\obj\Debug\Facturador.EnviarCorreo.resources
+D:\1 Programs\DESARROLLO PROGRAMMER\Facturador\Facturador\obj\Debug\c_sahrp.EnvioCorreo.resources
+D:\1 Programs\DESARROLLO PROGRAMMER\Facturador\Facturador\obj\Debug\Facturador.FactSUNAT.resources
+D:\1 Programs\DESARROLLO PROGRAMMER\Facturador\Facturador\obj\Debug\Facturador.GeneradorTXT.resources
+D:\1 Programs\DESARROLLO PROGRAMMER\Facturador\Facturador\obj\Debug\Facturador.Properties.Resources.resources
+D:\1 Programs\DESARROLLO PROGRAMMER\Facturador\Facturador\obj\Debug\Facturador.csproj.GenerateResource.Cache
+E:\1 Backup de programas final 20210628\DESARROLLO PROGRAMMER\Facturador\Facturador\bin\Debug\Facturador.exe.config
+E:\1 Backup de programas final 20210628\DESARROLLO PROGRAMMER\Facturador\Facturador\obj\Debug\Facturador.exe
+E:\1 Backup de programas final 20210628\DESARROLLO PROGRAMMER\Facturador\Facturador\obj\Debug\Facturador.pdb
+E:\1 Backup de programas final 20210628\DESARROLLO PROGRAMMER\Facturador\Facturador\bin\Debug\Facturador.exe
+E:\1 Backup de programas final 20210628\DESARROLLO PROGRAMMER\Facturador\Facturador\bin\Debug\Facturador.pdb
+E:\1 Backup de programas final 20210628\DESARROLLO PROGRAMMER\Facturador\Facturador\bin\Debug\Newtonsoft.Json.dll
+E:\1 Backup de programas final 20210628\DESARROLLO PROGRAMMER\Facturador\Facturador\bin\Debug\VB.exe
+E:\1 Backup de programas final 20210628\DESARROLLO PROGRAMMER\Facturador\Facturador\bin\Debug\VB.pdb
+E:\1 Backup de programas final 20210628\DESARROLLO PROGRAMMER\Facturador\Facturador\bin\Debug\VB.xml
+E:\1 Backup de programas final 20210628\DESARROLLO PROGRAMMER\Facturador\Facturador\obj\Debug\Facturador.csprojResolveAssemblyReference.cache
+E:\1 Backup de programas final 20210628\DESARROLLO PROGRAMMER\Facturador\Facturador\obj\Debug\Facturador.CambioFecha.resources
+E:\1 Backup de programas final 20210628\DESARROLLO PROGRAMMER\Facturador\Facturador\obj\Debug\Facturador.EnviarCorreo.resources
+E:\1 Backup de programas final 20210628\DESARROLLO PROGRAMMER\Facturador\Facturador\obj\Debug\c_sahrp.EnvioCorreo.resources
+E:\1 Backup de programas final 20210628\DESARROLLO PROGRAMMER\Facturador\Facturador\obj\Debug\Facturador.FactSUNAT.resources
+E:\1 Backup de programas final 20210628\DESARROLLO PROGRAMMER\Facturador\Facturador\obj\Debug\Facturador.GeneradorTXT.resources
+E:\1 Backup de programas final 20210628\DESARROLLO PROGRAMMER\Facturador\Facturador\obj\Debug\Facturador.Properties.Resources.resources
+E:\1 Backup de programas final 20210628\DESARROLLO PROGRAMMER\Facturador\Facturador\obj\Debug\Facturador.csproj.GenerateResource.Cache
+C:\Users\SERVER\Desktop\Facturador\Facturador\bin\Debug\Facturador.exe.config
+C:\Users\SERVER\Desktop\Facturador\Facturador\obj\Debug\Facturador.exe
+C:\Users\SERVER\Desktop\Facturador\Facturador\obj\Debug\Facturador.pdb
+C:\Users\SERVER\Desktop\Facturador\Facturador\bin\Debug\Facturador.exe
+C:\Users\SERVER\Desktop\Facturador\Facturador\bin\Debug\Facturador.pdb
+C:\Users\SERVER\Desktop\Facturador\Facturador\bin\Debug\Newtonsoft.Json.dll
+C:\Users\SERVER\Desktop\Facturador\Facturador\bin\Debug\VB.exe
+C:\Users\SERVER\Desktop\Facturador\Facturador\bin\Debug\VB.pdb
+C:\Users\SERVER\Desktop\Facturador\Facturador\bin\Debug\VB.xml
+C:\Users\SERVER\Desktop\Facturador\Facturador\obj\Debug\Facturador.csprojResolveAssemblyReference.cache
+C:\Users\SERVER\Desktop\Facturador\Facturador\obj\Debug\Facturador.CambioFecha.resources
+C:\Users\SERVER\Desktop\Facturador\Facturador\obj\Debug\Facturador.EnviarCorreo.resources
+C:\Users\SERVER\Desktop\Facturador\Facturador\obj\Debug\c_sahrp.EnvioCorreo.resources
+C:\Users\SERVER\Desktop\Facturador\Facturador\obj\Debug\Facturador.FactSUNAT.resources
+C:\Users\SERVER\Desktop\Facturador\Facturador\obj\Debug\Facturador.GeneradorTXT.resources
+C:\Users\SERVER\Desktop\Facturador\Facturador\obj\Debug\Facturador.Properties.Resources.resources
+C:\Users\SERVER\Desktop\Facturador\Facturador\obj\Debug\Facturador.csproj.GenerateResource.Cache
+C:\Users\SERVER\Desktop\Facturador\Facturador\obj\Debug\Facturador.csprojFakesResolveAssemblyReference.cache

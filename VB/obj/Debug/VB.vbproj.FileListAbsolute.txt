@@ -1,0 +1,50 @@
+D:\DESARROLLO PROGRAMMER\Facturador\VB\bin\Debug\VB.exe.config
+D:\DESARROLLO PROGRAMMER\Facturador\VB\bin\Debug\VB.exe
+D:\DESARROLLO PROGRAMMER\Facturador\VB\bin\Debug\VB.pdb
+D:\DESARROLLO PROGRAMMER\Facturador\VB\bin\Debug\VB.xml
+D:\DESARROLLO PROGRAMMER\Facturador\VB\obj\Debug\VB.Resources.resources
+D:\DESARROLLO PROGRAMMER\Facturador\VB\obj\Debug\VB.vbproj.GenerateResource.Cache
+D:\DESARROLLO PROGRAMMER\Facturador\VB\obj\Debug\VB.exe
+D:\DESARROLLO PROGRAMMER\Facturador\VB\obj\Debug\VB.xml
+D:\DESARROLLO PROGRAMMER\Facturador\VB\obj\Debug\VB.pdb
+D:\DESARROLLO PROGRAMMER\Facturador\VB\obj\Debug\VB.vbprojResolveAssemblyReference.cache
+F:\D\DESARROLLO PROGRAMMER\Facturador\VB\bin\Debug\VB.exe.config
+F:\D\DESARROLLO PROGRAMMER\Facturador\VB\bin\Debug\VB.exe
+F:\D\DESARROLLO PROGRAMMER\Facturador\VB\bin\Debug\VB.pdb
+F:\D\DESARROLLO PROGRAMMER\Facturador\VB\bin\Debug\VB.xml
+F:\D\DESARROLLO PROGRAMMER\Facturador\VB\obj\Debug\VB.vbprojResolveAssemblyReference.cache
+F:\D\DESARROLLO PROGRAMMER\Facturador\VB\obj\Debug\VB.Resources.resources
+F:\D\DESARROLLO PROGRAMMER\Facturador\VB\obj\Debug\VB.vbproj.GenerateResource.Cache
+F:\D\DESARROLLO PROGRAMMER\Facturador\VB\obj\Debug\VB.exe
+F:\D\DESARROLLO PROGRAMMER\Facturador\VB\obj\Debug\VB.xml
+F:\D\DESARROLLO PROGRAMMER\Facturador\VB\obj\Debug\VB.pdb
+D:\1 Programs\DESARROLLO PROGRAMMER\Facturador\VB\bin\Debug\VB.exe.config
+D:\1 Programs\DESARROLLO PROGRAMMER\Facturador\VB\bin\Debug\VB.exe
+D:\1 Programs\DESARROLLO PROGRAMMER\Facturador\VB\bin\Debug\VB.pdb
+D:\1 Programs\DESARROLLO PROGRAMMER\Facturador\VB\bin\Debug\VB.xml
+D:\1 Programs\DESARROLLO PROGRAMMER\Facturador\VB\obj\Debug\VB.vbprojResolveAssemblyReference.cache
+D:\1 Programs\DESARROLLO PROGRAMMER\Facturador\VB\obj\Debug\VB.Resources.resources
+D:\1 Programs\DESARROLLO PROGRAMMER\Facturador\VB\obj\Debug\VB.vbproj.GenerateResource.Cache
+D:\1 Programs\DESARROLLO PROGRAMMER\Facturador\VB\obj\Debug\VB.exe
+D:\1 Programs\DESARROLLO PROGRAMMER\Facturador\VB\obj\Debug\VB.xml
+D:\1 Programs\DESARROLLO PROGRAMMER\Facturador\VB\obj\Debug\VB.pdb
+E:\1 Backup de programas final 20210628\DESARROLLO PROGRAMMER\Facturador\VB\bin\Debug\VB.exe.config
+E:\1 Backup de programas final 20210628\DESARROLLO PROGRAMMER\Facturador\VB\bin\Debug\VB.exe
+E:\1 Backup de programas final 20210628\DESARROLLO PROGRAMMER\Facturador\VB\bin\Debug\VB.pdb
+E:\1 Backup de programas final 20210628\DESARROLLO PROGRAMMER\Facturador\VB\bin\Debug\VB.xml
+E:\1 Backup de programas final 20210628\DESARROLLO PROGRAMMER\Facturador\VB\obj\Debug\VB.vbprojResolveAssemblyReference.cache
+E:\1 Backup de programas final 20210628\DESARROLLO PROGRAMMER\Facturador\VB\obj\Debug\VB.Resources.resources
+E:\1 Backup de programas final 20210628\DESARROLLO PROGRAMMER\Facturador\VB\obj\Debug\VB.vbproj.GenerateResource.Cache
+E:\1 Backup de programas final 20210628\DESARROLLO PROGRAMMER\Facturador\VB\obj\Debug\VB.exe
+E:\1 Backup de programas final 20210628\DESARROLLO PROGRAMMER\Facturador\VB\obj\Debug\VB.xml
+E:\1 Backup de programas final 20210628\DESARROLLO PROGRAMMER\Facturador\VB\obj\Debug\VB.pdb
+C:\Users\SERVER\Desktop\Facturador\VB\bin\Debug\VB.exe.config
+C:\Users\SERVER\Desktop\Facturador\VB\bin\Debug\VB.exe
+C:\Users\SERVER\Desktop\Facturador\VB\bin\Debug\VB.pdb
+C:\Users\SERVER\Desktop\Facturador\VB\bin\Debug\VB.xml
+C:\Users\SERVER\Desktop\Facturador\VB\obj\Debug\VB.vbprojResolveAssemblyReference.cache
+C:\Users\SERVER\Desktop\Facturador\VB\obj\Debug\VB.Resources.resources
+C:\Users\SERVER\Desktop\Facturador\VB\obj\Debug\VB.vbproj.GenerateResource.Cache
+C:\Users\SERVER\Desktop\Facturador\VB\obj\Debug\VB.exe
+C:\Users\SERVER\Desktop\Facturador\VB\obj\Debug\VB.xml
+C:\Users\SERVER\Desktop\Facturador\VB\obj\Debug\VB.pdb
