@@ -123,6 +123,63 @@ Public Class Sunat
         End Try
     End Sub
 
+    Public Sub ActualizaEstadoResumenBoleta(ByVal nIdEmpresa As String, ByVal nIdVenta As String,
+                                               ByVal SunatTicket As String)
+        Try
+            scn = cn.conectar
+            scn.Open()
+
+            scmd = New SqlCommand("update Ventas set SunatOtro = '" & SunatTicket & "' where nIdEmpresa = " & nIdEmpresa & " and nIdVenta = " & nIdVenta, scn)
+            scmd.CommandType = CommandType.Text
+            scmd.ExecuteNonQuery()
+
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+        Finally
+            scn.Close()
+            scn.Dispose()
+            scmd.Dispose()
+        End Try
+    End Sub
+
+    Public Function ObtenerCorrelativoResumen(ByVal nIdEmpresa As String, ByVal Fecha As Date)
+        Try
+            scn = cn.conectar
+            scn.Open()
+            Dim comand As SqlCommand
+            comand = New SqlCommand("select dbo.ObtenerCorrelativoResumen(" + nIdEmpresa + ",'" + Fecha + "')", scn)
+            sda = New SqlDataAdapter(comand)
+            Dim dt As New DataTable()
+            sda.Fill(dt)
+
+
+            ObtenerCorrelativoResumen = dt.Rows(0)(0).ToString()
+
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Function
+
+
+    Public Sub RegistrarResumenDiario(ByVal nIdEmpresa As String, ByVal Fecha As Date,
+                                               ByVal SunatTicket As String)
+        Try
+            scn = cn.conectar
+            scn.Open()
+
+            scmd = New SqlCommand("exec GuardaResumenDiario " + nIdEmpresa + ",'" + Fecha + "'," + SunatTicket, scn)
+            scmd.CommandType = CommandType.Text
+            scmd.ExecuteNonQuery()
+
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+        Finally
+            scn.Close()
+            scn.Dispose()
+            scmd.Dispose()
+        End Try
+    End Sub
+
     Public Function BuscarComprobante(ByVal nIdEmpresa As Integer, ByVal text As String, bFecha As Integer, dFecha As Date, ByVal tabla As DataGridView)
         Try
             scn = cn.conectar
@@ -413,8 +470,20 @@ Public Class Sunat
                 Dim rucEmpresa As String = cab.EmpresaRUC
                 Dim razonEmpresa As String = cab.EmpresaRazonSocial
 
-                Dim numTicket As String = serv.GenerarResumenDiario_XML(dtpfecha.Text, rucEmpresa, razonEmpresa, DsResumen)
-                'txtNumTicket.Text = numTicket
+                Dim nCorrelativoResumen As Integer
+                nCorrelativoResumen = ObtenerCorrelativoResumen(cbempresa.SelectedValue, dtpfecha.Text)
+                Dim numTicket As String = serv.GenerarResumenDiario_XML(dtpfecha.Text, rucEmpresa, razonEmpresa, DsResumen, nCorrelativoResumen)
+
+                If Trim(numTicket) <> "" Then
+                    For Renglones As Integer = 0 To dgvlista.RowCount - 1
+                        Dim Empresa, CodVenta As String
+                        Empresa = Me.dgvlista.Item(0, Renglones).Value
+                        CodVenta = Me.dgvlista.Item(1, Renglones).Value
+                        ActualizaEstadoResumenBoleta(Empresa, CodVenta, numTicket)
+                    Next
+                    RegistrarResumenDiario(cbempresa.SelectedValue, dtpfecha.Text, numTicket)
+                End If
+
                 MessageBox.Show("Enviado a SUNAT, debe consultar el estado a tráves del número de ticket: " & numTicket, "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Catch ex As Exception
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.[Error])

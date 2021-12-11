@@ -1487,7 +1487,7 @@ Namespace CapaSUNAT.Servicios
         End Function
 
         Function GenerarResumenDiario_XML(ByVal Fecha As DateTime, ByVal EmpresaRUC As String, ByVal EmpresaRazonSocial As String,
-                                          ByVal dsResumen As System.Data.DataSet) As String
+                                          ByVal dsResumen As System.Data.DataSet, ByVal nIdCorrelativo As Integer) As String
             Dim Resumen As Resumenes.SummaryDocumentsType = New Resumenes.SummaryDocumentsType()
             Dim numTicket As String = ""
 
@@ -1509,12 +1509,12 @@ Namespace CapaSUNAT.Servicios
                     Resumen.CustomizationID = New Resumenes.CustomizationIDType()
                     Resumen.CustomizationID.Value = "1.1"
                     Resumen.ID = New Resumenes.IDType()
-                    Resumen.ID.Value = "RC-" & DateTime.Now.ToString("yyyyMMdd") & "-001"
+                    Resumen.ID.Value = "RC-" & Fecha.ToString("yyyyMMdd") & "-001"
                     Dim FechaEmision As Resumenes.ReferenceDateType = New Resumenes.ReferenceDateType()
-                    FechaEmision.Value = Convert.ToDateTime(dsResumen.Tables(0).Rows(0)("FECHAEMISION"))
+                    FechaEmision.Value = Convert.ToDateTime(dsResumen.Tables(0).Rows(0)(5))
                     Resumen.ReferenceDate = FechaEmision
                     Resumen.IssueDate = New Resumenes.IssueDateType()
-                    Dim fechaGeneracion As DateTime = DateTime.Now.Date
+                    Dim fechaGeneracion As DateTime = Fecha.Date
                     Resumen.IssueDate.Value = Convert.ToDateTime(fechaGeneracion)
                     Dim Firma As Resumenes.SignatureType = New Resumenes.SignatureType()
                     Dim Firmas As Resumenes.SignatureType() = New Resumenes.SignatureType(1) {}
@@ -1586,35 +1586,36 @@ Namespace CapaSUNAT.Servicios
                         numeroItem.Value = iditem.ToString()
                         item.LineID = numeroItem
                         Dim TipoDocumento As Resumenes.DocumentTypeCodeType = New Resumenes.DocumentTypeCodeType()
-                        TipoDocumento.Value = reg("IDTIPOCOMP").ToString()
+                        TipoDocumento.Value = "03"  'reg("IDTIPOCOMP").ToString()
                         item.DocumentTypeCode = TipoDocumento
                         Dim NumDocumento As Resumenes.IDType = New Resumenes.IDType()
-                        NumDocumento.Value = reg("NumeroComprobante").ToString()
+                        NumDocumento.Value = reg(3) & "-" & reg(4)   'reg("NumeroComprobante").ToString()
                         item.ID = NumDocumento
+
                         Dim Cliente As Resumenes.CustomerPartyType = New Resumenes.CustomerPartyType()
                         Dim NumeroDocumento As Resumenes.CustomerAssignedAccountIDType = New Resumenes.CustomerAssignedAccountIDType()
-                        NumeroDocumento.Value = reg("NumDoc").ToString()
+                        NumeroDocumento.Value = reg(6)  'reg("NumDoc").ToString()
                         Cliente.CustomerAssignedAccountID = NumeroDocumento
                         Dim TipoDocumentoCliente As Resumenes.AdditionalAccountIDType = New Resumenes.AdditionalAccountIDType()
                         Dim TipoDocumentoClientes As Resumenes.AdditionalAccountIDType() = New Resumenes.AdditionalAccountIDType(1) {}
                         TipoDocumentoClientes(0) = TipoDocumentoCliente
-                        TipoDocumentoCliente.Value = reg("IdTipoDoc").ToString()
+                        TipoDocumentoCliente.Value = reg(12)
                         Cliente.AdditionalAccountID = TipoDocumentoClientes
                         item.AccountingCustomerParty = Cliente
                         Dim Estado As Resumenes.StatusType = New Resumenes.StatusType()
                         Dim condicion As Resumenes.ConditionCodeType = New Resumenes.ConditionCodeType()
-                        condicion.Value = reg("Adicionar").ToString()
+                        condicion.Value = "1" 'reg("Adicionar").ToString()
                         Estado.ConditionCode = condicion
                         item.Status = Estado
                         Dim Total As Resumenes.AmountType1 = New Resumenes.AmountType1()
 
-                        If reg("IDMONEDA").ToString() = "PEN" Then
+                        If reg(13).ToString() = "PEN" Then
                             Total.currencyID = CurrencyCodeContentType.PEN
-                        ElseIf reg("IDMONEDA").ToString() = "USD" Then
+                        ElseIf reg(13).ToString() = "USD" Then
                             Total.currencyID = CurrencyCodeContentType.USD
                         End If
 
-                        Total.Value = Convert.ToDecimal(reg("TOT_NETO"))
+                        Total.Value = Convert.ToDecimal(reg(8))
                         item.TotalAmount = Total
                         Dim PagoSubtotal As Resumenes.PaymentType = New Resumenes.PaymentType()
                         Dim PagoSubtotals As Resumenes.PaymentType() = New Resumenes.PaymentType(1) {}
@@ -1622,59 +1623,64 @@ Namespace CapaSUNAT.Servicios
                         Dim TipoImporteTotal As Resumenes.InstructionIDType = New Resumenes.InstructionIDType()
                         TipoImporteTotal.Value = "01"
 
-                        If reg("IDMONEDA").ToString() = "PEN" Then
-                            SubTotal.currencyID = CurrencyCodeContentType.PEN
-                        ElseIf reg("IDMONEDA").ToString() = "USD" Then
-                            SubTotal.currencyID = CurrencyCodeContentType.USD
+                        If reg(13).ToString() = "PEN" Then
+                            Total.currencyID = CurrencyCodeContentType.PEN
+                        ElseIf reg(13).ToString() = "USD" Then
+                            Total.currencyID = CurrencyCodeContentType.USD
                         End If
 
-                        SubTotal.Value = Convert.ToDecimal(reg("TOT_VALOR_VENTA"))
+                        SubTotal.Value = Convert.ToDecimal(reg(8))
                         Dim Tipo As Resumenes.InstructionIDType = New Resumenes.InstructionIDType()
                         Tipo.Value = "01"
                         PagoSubtotal.PaidAmount = SubTotal
                         PagoSubtotals(0) = PagoSubtotal
                         PagoSubtotal.InstructionID = Tipo
+
+
                         Dim Totals_ISCItems As Resumenes.TaxTotalType() = New Resumenes.TaxTotalType(1) {}
                         Dim Total_ISCItem As Resumenes.TaxTotalType = New Resumenes.TaxTotalType()
                         Dim Total_ItemISC As Resumenes.TaxAmountType = New Resumenes.TaxAmountType()
-                        Total_ItemISC.Value = Convert.ToDecimal(reg("TOT_ISC"))
+                        'Total_ItemISC.Value = Convert.ToDecimal(reg("TOT_ISC"))
 
-                        If reg("IDMONEDA").ToString() = "PEN" Then
-                            Total_ItemISC.currencyID = CurrencyCodeContentType.PEN
-                        ElseIf reg("IDMONEDA").ToString() = "USD" Then
-                            Total_ItemISC.currencyID = CurrencyCodeContentType.USD
-                        End If
+                        'If reg("IDMONEDA").ToString() = "PEN" Then
+                        '    Total_ItemISC.currencyID = CurrencyCodeContentType.PEN
+                        'ElseIf reg("IDMONEDA").ToString() = "USD" Then
+                        '    Total_ItemISC.currencyID = CurrencyCodeContentType.USD
+                        'End If
 
-                        Total_ISCItem.TaxAmount = Total_ItemISC
-                        Totals_ISCItems(0) = Total_ISCItem
-                        Dim Category_ISCItem As Resumenes.TaxCategoryType = New Resumenes.TaxCategoryType()
-                        Dim TaxScheme_ISCItem As Resumenes.TaxSchemeType = New Resumenes.TaxSchemeType()
-                        Dim id_ISCitem As Resumenes.IDType = New Resumenes.IDType()
-                        id_ISCitem.Value = "2000"
-                        TaxScheme_ISCItem.ID = id_ISCitem
-                        Dim nombreImpto_ISCItem As Resumenes.NameType1 = New Resumenes.NameType1()
-                        nombreImpto_ISCItem.Value = "ISC"
-                        TaxScheme_ISCItem.Name = nombreImpto_ISCItem
-                        Dim nombreImpto_ISCItemInter As Resumenes.TaxTypeCodeType = New Resumenes.TaxTypeCodeType()
-                        nombreImpto_ISCItemInter.Value = "EXC"
-                        TaxScheme_ISCItem.TaxTypeCode = nombreImpto_ISCItemInter
-                        Category_ISCItem.TaxScheme = TaxScheme_ISCItem
-                        Dim subtotal_ISCs As Resumenes.TaxSubtotalType() = New Resumenes.TaxSubtotalType(1) {}
-                        Dim subtotal_ISC As Resumenes.TaxSubtotalType = New Resumenes.TaxSubtotalType()
-                        subtotal_ISC.TaxCategory = Category_ISCItem
-                        subtotal_ISC.TaxAmount = Total_ItemISC
-                        subtotal_ISCs(0) = subtotal_ISC
-                        Total_ISCItem.TaxSubtotal = subtotal_ISCs
-                        TotalesTributos(0) = Total_ISCItem
+                        'Total_ISCItem.TaxAmount = Total_ItemISC
+                        'Totals_ISCItems(0) = Total_ISCItem
+                        'Dim Category_ISCItem As Resumenes.TaxCategoryType = New Resumenes.TaxCategoryType()
+                        'Dim TaxScheme_ISCItem As Resumenes.TaxSchemeType = New Resumenes.TaxSchemeType()
+                        'Dim id_ISCitem As Resumenes.IDType = New Resumenes.IDType()
+                        'id_ISCitem.Value = "2000"   '''''''''''''''''''''''
+                        'TaxScheme_ISCItem.ID = id_ISCitem
+                        'Dim nombreImpto_ISCItem As Resumenes.NameType1 = New Resumenes.NameType1()
+                        'nombreImpto_ISCItem.Value = "ISC"
+                        'TaxScheme_ISCItem.Name = nombreImpto_ISCItem
+                        'Dim nombreImpto_ISCItemInter As Resumenes.TaxTypeCodeType = New Resumenes.TaxTypeCodeType()
+                        'nombreImpto_ISCItemInter.Value = "EXC"
+                        'TaxScheme_ISCItem.TaxTypeCode = nombreImpto_ISCItemInter
+                        'Category_ISCItem.TaxScheme = TaxScheme_ISCItem
+                        'Dim subtotal_ISCs As Resumenes.TaxSubtotalType() = New Resumenes.TaxSubtotalType(1) {}
+                        'Dim subtotal_ISC As Resumenes.TaxSubtotalType = New Resumenes.TaxSubtotalType()
+                        'subtotal_ISC.TaxCategory = Category_ISCItem
+                        'subtotal_ISC.TaxAmount = Total_ItemISC
+                        'subtotal_ISCs(0) = subtotal_ISC
+                        'Total_ISCItem.TaxSubtotal = subtotal_ISCs
+                        'TotalesTributos(0) = Total_ISCItem
+
+                        '*************************************************************INICIA TRUBUTO*************************************************************
                         Dim Totals_IGVItems As Resumenes.TaxTotalType() = New Resumenes.TaxTotalType(1) {}
                         Dim Total_IGVItem As Resumenes.TaxTotalType = New Resumenes.TaxTotalType()
                         Dim Total_ItemIGV As Resumenes.TaxAmountType = New Resumenes.TaxAmountType()
-                        Total_ItemIGV.Value = Convert.ToDecimal(reg("TOT_IGV"))
+                        Total_ItemIGV.currencyID = CurrencyCodeContentType.PEN
+                        Total_ItemIGV.Value = "0"   'Convert.ToDecimal(reg("TOT_IGV"))
 
-                        If reg("IDMONEDA").ToString() = "PEN" Then
-                            Total_ItemIGV.currencyID = CurrencyCodeContentType.PEN
-                        ElseIf reg("IDMONEDA").ToString() = "USD" Then
-                            Total_ItemIGV.currencyID = CurrencyCodeContentType.USD
+                        If reg(13).ToString() = "PEN" Then
+                            Total.currencyID = CurrencyCodeContentType.PEN
+                        ElseIf reg(13).ToString() = "USD" Then
+                            Total.currencyID = CurrencyCodeContentType.USD
                         End If
 
                         Total_IGVItem.TaxAmount = Total_ItemIGV
@@ -1698,15 +1704,19 @@ Namespace CapaSUNAT.Servicios
                         subtotal_IGVs(0) = subtotal_IGV
                         Total_IGVItem.TaxSubtotal = subtotal_IGVs
                         TotalesTributos(1) = Total_IGVItem
+                        '*************************************************************FIN TRUBUTO*************************************************************
+
+
                         Dim Totals_OtrosItems As Resumenes.TaxTotalType() = New Resumenes.TaxTotalType(1) {}
                         Dim Total_OtrosItem As Resumenes.TaxTotalType = New Resumenes.TaxTotalType()
                         Dim Total_ItemOtros As Resumenes.TaxAmountType = New Resumenes.TaxAmountType()
-                        Total_ItemOtros.Value = Convert.ToDecimal(reg("TOT_OTOT"))
+                        Total_ItemOtros.currencyID = CurrencyCodeContentType.PEN
+                        Total_ItemOtros.Value = 0 'Convert.ToDecimal(reg(8))
 
-                        If reg("IDMONEDA").ToString() = "PEN" Then
-                            Total_ItemOtros.currencyID = CurrencyCodeContentType.PEN
-                        ElseIf reg("IDMONEDA").ToString() = "USD" Then
-                            Total_ItemOtros.currencyID = CurrencyCodeContentType.USD
+                        If reg(13).ToString() = "PEN" Then
+                            Total.currencyID = CurrencyCodeContentType.PEN
+                        ElseIf reg(13).ToString() = "USD" Then
+                            Total.currencyID = CurrencyCodeContentType.USD
                         End If
 
                         Total_OtrosItem.TaxAmount = Total_ItemOtros
@@ -1714,11 +1724,12 @@ Namespace CapaSUNAT.Servicios
                         Dim subtotal_Otross As Resumenes.TaxSubtotalType() = New Resumenes.TaxSubtotalType(1) {}
                         Dim subtotal_Otros As Resumenes.TaxSubtotalType = New Resumenes.TaxSubtotalType()
                         Dim Total_ItemOtrosSub As Resumenes.TaxAmountType = New Resumenes.TaxAmountType()
+                        Total_ItemOtrosSub.currencyID = CurrencyCodeContentType.PEN
 
-                        If reg("IDMONEDA").ToString() = "PEN" Then
-                            Total_ItemOtrosSub.currencyID = CurrencyCodeContentType.PEN
-                        ElseIf reg("IDMONEDA").ToString() = "USD" Then
-                            Total_ItemOtrosSub.currencyID = CurrencyCodeContentType.USD
+                        If reg(13).ToString() = "PEN" Then
+                            Total.currencyID = CurrencyCodeContentType.PEN
+                        ElseIf reg(13).ToString() = "USD" Then
+                            Total.currencyID = CurrencyCodeContentType.USD
                         End If
 
                         subtotal_Otros.TaxAmount = Total_ItemOtrosSub
@@ -1737,15 +1748,17 @@ Namespace CapaSUNAT.Servicios
                         subtotal_Otros.TaxCategory = Category_OtrosItem
                         subtotal_Otros.TaxAmount = Total_ItemOtrosSub
                         subtotal_Otross(0) = subtotal_Otros
+
                         Total_OtrosItem.TaxSubtotal = subtotal_Otross
                         TotalesTributos(2) = Total_OtrosItem
                         item.TaxTotal = TotalesTributos
+
                         items(iditem) = item
                         iditem += 1
                     Next
 
                     Resumen.SummaryDocumentsLine = items
-                    Dim archXML As String = GenerarResumenDiario(Resumen, Fecha, "RC", 1, EmpresaRUC)
+                    Dim archXML As String = GenerarResumenDiario(Resumen, Fecha, "RC", nIdCorrelativo, EmpresaRUC)
                     FirmarXML(archXML, Ruta_Certificado, Password_Certificado)
                     Dim strEnvio As String = Ruta_ENVIOS & Path.GetFileName(archXML).Replace(".xml", ".zip")
                     Comprimir(archXML, strEnvio)
@@ -1918,7 +1931,7 @@ Namespace CapaSUNAT.Servicios
             Dim setting As XmlWriterSettings = New XmlWriterSettings()
             setting.Indent = True
             setting.IndentChars = vbTab
-            Dim ArchivoXML As String = RUCEmpresa & "-" & TipoDocumento & "-" & DateTime.Now.ToString("yyyyMMdd") & "-" & correlativo.ToString().PadLeft(3, "0"c)
+            Dim ArchivoXML As String = RUCEmpresa & "-" & TipoDocumento & "-" & Fecha.ToString("yyyyMMdd") & "-" & correlativo.ToString().PadLeft(3, "0"c)
             Dim rutaXML As String = String.Format("{0}{1}.xml", Ruta_XML, ArchivoXML)
 
             Using writer As XmlWriter = XmlWriter.Create(rutaXML, setting)

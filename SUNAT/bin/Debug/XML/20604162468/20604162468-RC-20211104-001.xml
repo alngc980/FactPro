@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SummaryDocuments xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:ext="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2" xmlns:qdt="urn:sunat:names:specification:ubl:peru:schema:xsd:SunatAggregateComponents-1" xmlns="urn:sunat:names:specification:ubl:peru:schema:xsd:SummaryDocuments-1">
+	<ext:UBLExtensions>
+		<ext:UBLExtension> <ext:ExtensionContent><ds:Signature Id="SignSUNAT"><SignedInfo xmlns="http://www.w3.org/2000/09/xmldsig#"><CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" /><DigestValue>RJHj72wZSOGu43rSsBgpnB7flcE=</DigestValue></Reference></SignedInfo><SignatureValue xmlns="http://www.w3.org/2000/09/xmldsig#">dbSSpXKZSeqluXrUZxO8tDQEzQN0d0KPRRGfGUHGYFnqZwI8BF5PhmFtDhYsU+LtSVgejjUDaYBwAOT2FW7CFNv4o8nKOHKStWtJ+NkB0xup6v3jEJOAKhtvoE7tHnWQLgk+IZwr9Wnpkx3hzU4vgMSePuBjno6bqDz0Ta4Mioc0x/AzcGmJsMnuROsMvnNXLqf6txBM9AxqwiyuNmF+N9S/mjOGGiJ3mhJxe0mSFklTiWhvUbzFRq0uQLF0dBq+8CeB8yplaUbEd7LtdrZ22tezNUAYRofgio/YSsDfhypsZFB14V0wus16/dPoi4i2CUJSlVtJO/Su1QuVuW7IzQ==</SignatureValue><KeyInfo xmlns="http://www.w3.org/2000/09/xmldsig#"><X509Data><X509SubjectName>CN=||USO TRIBUTARIO|| GRUPO CANARIAS S.A.C. CDT 20604162468, OU=20604162468, OU=EREP_SUNAT_2020000037205, OID.2.5.4.97=NTRPE-20604162468, O=GRUPO CANARIAS S.A.C., L=IQUITOS, S=LORETO-MAYNAS, C=PE</X509SubjectName><X509Certificate>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</X509Certificate></X509Data></KeyInfo></ds:Signature></ext:ExtensionContent></ext:UBLExtension>
+	</ext:UBLExtensions>
+	<cbc:UBLVersionID>2.0</cbc:UBLVersionID>
+	<cbc:CustomizationID>1.1</cbc:CustomizationID>
+	<cbc:ID>RC-20211104-001</cbc:ID>
+	<cbc:ReferenceDate>2021-11-04</cbc:ReferenceDate>
+	<cbc:IssueDate>2021-11-04</cbc:IssueDate>
+	<cac:Signature>
+		<cbc:ID>20604162468</cbc:ID>
+		<cbc:Note>Elaborado por Sistema de Emision Electronica NET SOLUTION DEVELOPER </cbc:Note>
+		<cac:SignatoryParty>
+			<cac:PartyIdentification>
+				<cbc:ID>20604162468</cbc:ID>
+			</cac:PartyIdentification>
+			<cac:PartyName>
+				<cbc:Name>GRUPO CANARIAS S.A.C.</cbc:Name>
+			</cac:PartyName>
+		</cac:SignatoryParty>
+		<cac:DigitalSignatureAttachment>
+			<cac:ExternalReference>
+				<cbc:URI>SIGN</cbc:URI>
+			</cac:ExternalReference>
+		</cac:DigitalSignatureAttachment>
+	</cac:Signature>
+	<cac:AccountingSupplierParty>
+		<cbc:CustomerAssignedAccountID>20604162468</cbc:CustomerAssignedAccountID>
+		<cbc:AdditionalAccountID>6</cbc:AdditionalAccountID>
+		<cac:Party>
+			<cac:PartyLegalEntity>
+				<cbc:RegistrationName>GRUPO CANARIAS S.A.C.</cbc:RegistrationName>
+			</cac:PartyLegalEntity>
+		</cac:Party>
+	</cac:AccountingSupplierParty>
+	<qdt:SummaryDocumentsLine>
+		<cbc:LineID>1</cbc:LineID>
+		<cbc:DocumentTypeCode>03</cbc:DocumentTypeCode>
+		<cbc:ID>B001-102</cbc:ID>
+		<cac:AccountingCustomerParty>
+			<cbc:CustomerAssignedAccountID>0000</cbc:CustomerAssignedAccountID>
+			<cbc:AdditionalAccountID>0</cbc:AdditionalAccountID>
+		</cac:AccountingCustomerParty>
+		<cac:Status>
+			<cbc:ConditionCode>1</cbc:ConditionCode>
+		</cac:Status>
+		<qdt:TotalAmount currencyID="PEN">71.50</qdt:TotalAmount>
+		<cac:TaxTotal>
+			<cbc:TaxAmount currencyID="PEN">0</cbc:TaxAmount>
+			<cac:TaxSubtotal>
+				<cbc:TaxAmount currencyID="PEN">0</cbc:TaxAmount>
+				<cac:TaxCategory>
+					<cac:TaxScheme>
+						<cbc:ID>1000</cbc:ID>
+						<cbc:Name>IGV</cbc:Name>
+						<cbc:TaxTypeCode>VAT</cbc:TaxTypeCode>
+					</cac:TaxScheme>
+				</cac:TaxCategory>
+			</cac:TaxSubtotal>
+		</cac:TaxTotal>
+		<cac:TaxTotal>
+			<cbc:TaxAmount currencyID="PEN">0</cbc:TaxAmount>
+			<cac:TaxSubtotal>
+				<cbc:TaxAmount currencyID="PEN">0</cbc:TaxAmount>
+				<cac:TaxCategory>
+					<cac:TaxScheme>
+						<cbc:ID>9999</cbc:ID>
+						<cbc:Name>OTROS</cbc:Name>
+						<cbc:TaxTypeCode>OTH</cbc:TaxTypeCode>
+					</cac:TaxScheme>
+				</cac:TaxCategory>
+			</cac:TaxSubtotal>
+		</cac:TaxTotal>
+	</qdt:SummaryDocumentsLine>
+</SummaryDocuments>
