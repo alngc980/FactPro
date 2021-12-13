@@ -34,7 +34,14 @@ Partial Class Sunat
         Me.btnreiniciar = New System.Windows.Forms.Button()
         Me.btngenerarResumen = New System.Windows.Forms.Button()
         Me.ckresumen = New System.Windows.Forms.CheckBox()
+        Me.panel1 = New System.Windows.Forms.Panel()
+        Me.dtpfechanueva = New System.Windows.Forms.DateTimePicker()
+        Me.btnguardar = New System.Windows.Forms.Button()
+        Me.lblseriecorrelativo = New System.Windows.Forms.Label()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.ctncerrar = New System.Windows.Forms.Button()
         CType(Me.dgvlista, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.panel1.SuspendLayout()
         Me.SuspendLayout()
         '
         'btnEnviar
@@ -152,11 +159,73 @@ Partial Class Sunat
         Me.ckresumen.Text = "Resumen"
         Me.ckresumen.UseVisualStyleBackColor = True
         '
+        'panel1
+        '
+        Me.panel1.Controls.Add(Me.ctncerrar)
+        Me.panel1.Controls.Add(Me.Label3)
+        Me.panel1.Controls.Add(Me.lblseriecorrelativo)
+        Me.panel1.Controls.Add(Me.btnguardar)
+        Me.panel1.Controls.Add(Me.dtpfechanueva)
+        Me.panel1.Location = New System.Drawing.Point(270, 123)
+        Me.panel1.Name = "panel1"
+        Me.panel1.Size = New System.Drawing.Size(324, 145)
+        Me.panel1.TabIndex = 18
+        Me.panel1.Visible = False
+        '
+        'dtpfechanueva
+        '
+        Me.dtpfechanueva.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.dtpfechanueva.Location = New System.Drawing.Point(77, 60)
+        Me.dtpfechanueva.Name = "dtpfechanueva"
+        Me.dtpfechanueva.Size = New System.Drawing.Size(224, 20)
+        Me.dtpfechanueva.TabIndex = 5
+        '
+        'btnguardar
+        '
+        Me.btnguardar.Location = New System.Drawing.Point(77, 96)
+        Me.btnguardar.Name = "btnguardar"
+        Me.btnguardar.Size = New System.Drawing.Size(184, 32)
+        Me.btnguardar.TabIndex = 6
+        Me.btnguardar.Text = "GRABAR"
+        Me.btnguardar.UseVisualStyleBackColor = True
+        '
+        'lblseriecorrelativo
+        '
+        Me.lblseriecorrelativo.AutoSize = True
+        Me.lblseriecorrelativo.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblseriecorrelativo.ForeColor = System.Drawing.Color.Red
+        Me.lblseriecorrelativo.Location = New System.Drawing.Point(24, 25)
+        Me.lblseriecorrelativo.Name = "lblseriecorrelativo"
+        Me.lblseriecorrelativo.Size = New System.Drawing.Size(101, 25)
+        Me.lblseriecorrelativo.TabIndex = 19
+        Me.lblseriecorrelativo.Text = "BUSCAR"
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(17, 66)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(45, 13)
+        Me.Label3.TabIndex = 20
+        Me.Label3.Text = "FECHA:"
+        '
+        'ctncerrar
+        '
+        Me.ctncerrar.BackColor = System.Drawing.Color.Red
+        Me.ctncerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.ctncerrar.Location = New System.Drawing.Point(290, 3)
+        Me.ctncerrar.Name = "ctncerrar"
+        Me.ctncerrar.Size = New System.Drawing.Size(31, 26)
+        Me.ctncerrar.TabIndex = 21
+        Me.ctncerrar.Text = "X"
+        Me.ctncerrar.UseVisualStyleBackColor = False
+        '
         'Sunat
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(881, 386)
+        Me.Controls.Add(Me.panel1)
         Me.Controls.Add(Me.ckresumen)
         Me.Controls.Add(Me.btngenerarResumen)
         Me.Controls.Add(Me.btnreiniciar)
@@ -172,6 +241,8 @@ Partial Class Sunat
         Me.Name = "Sunat"
         Me.Text = "SUNAT"
         CType(Me.dgvlista, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.panel1.ResumeLayout(False)
+        Me.panel1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -188,4 +259,10 @@ Partial Class Sunat
     Friend WithEvents btnreiniciar As Button
     Friend WithEvents btngenerarResumen As Button
     Friend WithEvents ckresumen As CheckBox
+    Friend WithEvents panel1 As Panel
+    Friend WithEvents ctncerrar As Button
+    Friend WithEvents Label3 As Label
+    Friend WithEvents lblseriecorrelativo As Label
+    Friend WithEvents btnguardar As Button
+    Friend WithEvents dtpfechanueva As DateTimePicker
 End Class

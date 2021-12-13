@@ -14,6 +14,7 @@ Public Class Sunat
 
 
     Public DsResumen As DataSet
+    Dim nidEmpresa As String
 
     Sub ListarEmpresas()
         cbempresa.DataSource = listar_forma_pago.Tables("Empresa")
@@ -33,10 +34,6 @@ Public Class Sunat
 
         End Try
     End Sub
-
-
-
-
 
     Public Function listar_forma_pago() As DataSet
         Try
@@ -111,6 +108,25 @@ Public Class Sunat
             scn.Open()
 
             scmd = New SqlCommand("update Ventas set SunatEstado = '" & SunatEstado & "', SunatDescripcion = '" & SunatDescripcion & "', SunatError = '" & SunatError & "' where nIdEmpresa = " & nIdEmpresa & " and nIdVenta = " & nIdVenta, scn)
+            scmd.CommandType = CommandType.Text
+            scmd.ExecuteNonQuery()
+
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+        Finally
+            scn.Close()
+            scn.Dispose()
+            scmd.Dispose()
+        End Try
+    End Sub
+
+    Public Sub ActualizaFechaComprobante(ByVal nIdEmpresa As String, ByVal nIdVenta As String,
+                                               ByVal fecha As DateTime)
+        Try
+            scn = cn.conectar
+            scn.Open()
+
+            scmd = New SqlCommand("update ventas set dFechaHora = '" + fecha + "' where nIdEmpresa = " + nIdEmpresa + " and nIdVenta = " + nIdVenta, scn)
             scmd.CommandType = CommandType.Text
             scmd.ExecuteNonQuery()
 
@@ -502,5 +518,13 @@ Public Class Sunat
         Else
             btngenerarResumen.Enabled = False
         End If
+    End Sub
+
+    Private Sub ctncerrar_Click(sender As Object, e As EventArgs) Handles ctncerrar.Click
+        panel1.Visible = True
+    End Sub
+
+    Private Sub btnguardar_Click(sender As Object, e As EventArgs) Handles btnguardar.Click
+        ActualizaFechaComprobante(cbempresa.SelectedValue, nidEmpresa, dtpfechanueva.Text)
     End Sub
 End Class
