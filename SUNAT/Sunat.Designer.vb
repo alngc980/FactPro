@@ -35,11 +35,11 @@ Partial Class Sunat
         Me.btngenerarResumen = New System.Windows.Forms.Button()
         Me.ckresumen = New System.Windows.Forms.CheckBox()
         Me.panel1 = New System.Windows.Forms.Panel()
-        Me.dtpfechanueva = New System.Windows.Forms.DateTimePicker()
-        Me.btnguardar = New System.Windows.Forms.Button()
-        Me.lblseriecorrelativo = New System.Windows.Forms.Label()
-        Me.Label3 = New System.Windows.Forms.Label()
         Me.ctncerrar = New System.Windows.Forms.Button()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.lblseriecorrelativo = New System.Windows.Forms.Label()
+        Me.btnguardar = New System.Windows.Forms.Button()
+        Me.dtpfechanueva = New System.Windows.Forms.DateTimePicker()
         CType(Me.dgvlista, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.panel1.SuspendLayout()
         Me.SuspendLayout()
@@ -161,6 +161,8 @@ Partial Class Sunat
         '
         'panel1
         '
+        Me.panel1.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.panel1.Controls.Add(Me.ctncerrar)
         Me.panel1.Controls.Add(Me.Label3)
         Me.panel1.Controls.Add(Me.lblseriecorrelativo)
@@ -172,43 +174,6 @@ Partial Class Sunat
         Me.panel1.TabIndex = 18
         Me.panel1.Visible = False
         '
-        'dtpfechanueva
-        '
-        Me.dtpfechanueva.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dtpfechanueva.Location = New System.Drawing.Point(77, 60)
-        Me.dtpfechanueva.Name = "dtpfechanueva"
-        Me.dtpfechanueva.Size = New System.Drawing.Size(224, 20)
-        Me.dtpfechanueva.TabIndex = 5
-        '
-        'btnguardar
-        '
-        Me.btnguardar.Location = New System.Drawing.Point(77, 96)
-        Me.btnguardar.Name = "btnguardar"
-        Me.btnguardar.Size = New System.Drawing.Size(184, 32)
-        Me.btnguardar.TabIndex = 6
-        Me.btnguardar.Text = "GRABAR"
-        Me.btnguardar.UseVisualStyleBackColor = True
-        '
-        'lblseriecorrelativo
-        '
-        Me.lblseriecorrelativo.AutoSize = True
-        Me.lblseriecorrelativo.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblseriecorrelativo.ForeColor = System.Drawing.Color.Red
-        Me.lblseriecorrelativo.Location = New System.Drawing.Point(24, 25)
-        Me.lblseriecorrelativo.Name = "lblseriecorrelativo"
-        Me.lblseriecorrelativo.Size = New System.Drawing.Size(101, 25)
-        Me.lblseriecorrelativo.TabIndex = 19
-        Me.lblseriecorrelativo.Text = "BUSCAR"
-        '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(17, 66)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(45, 13)
-        Me.Label3.TabIndex = 20
-        Me.Label3.Text = "FECHA:"
-        '
         'ctncerrar
         '
         Me.ctncerrar.BackColor = System.Drawing.Color.Red
@@ -219,6 +184,43 @@ Partial Class Sunat
         Me.ctncerrar.TabIndex = 21
         Me.ctncerrar.Text = "X"
         Me.ctncerrar.UseVisualStyleBackColor = False
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(17, 66)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(45, 13)
+        Me.Label3.TabIndex = 20
+        Me.Label3.Text = "FECHA:"
+        '
+        'lblseriecorrelativo
+        '
+        Me.lblseriecorrelativo.AutoSize = True
+        Me.lblseriecorrelativo.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblseriecorrelativo.ForeColor = System.Drawing.Color.Red
+        Me.lblseriecorrelativo.Location = New System.Drawing.Point(15, 12)
+        Me.lblseriecorrelativo.Name = "lblseriecorrelativo"
+        Me.lblseriecorrelativo.Size = New System.Drawing.Size(101, 25)
+        Me.lblseriecorrelativo.TabIndex = 19
+        Me.lblseriecorrelativo.Text = "BUSCAR"
+        '
+        'btnguardar
+        '
+        Me.btnguardar.Location = New System.Drawing.Point(77, 96)
+        Me.btnguardar.Name = "btnguardar"
+        Me.btnguardar.Size = New System.Drawing.Size(184, 32)
+        Me.btnguardar.TabIndex = 6
+        Me.btnguardar.Text = "GRABAR"
+        Me.btnguardar.UseVisualStyleBackColor = True
+        '
+        'dtpfechanueva
+        '
+        Me.dtpfechanueva.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.dtpfechanueva.Location = New System.Drawing.Point(77, 60)
+        Me.dtpfechanueva.Name = "dtpfechanueva"
+        Me.dtpfechanueva.Size = New System.Drawing.Size(224, 20)
+        Me.dtpfechanueva.TabIndex = 5
         '
         'Sunat
         '

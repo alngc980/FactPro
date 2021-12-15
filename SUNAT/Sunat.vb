@@ -521,10 +521,24 @@ Public Class Sunat
     End Sub
 
     Private Sub ctncerrar_Click(sender As Object, e As EventArgs) Handles ctncerrar.Click
-        panel1.Visible = True
+        panel1.Visible = False
     End Sub
 
     Private Sub btnguardar_Click(sender As Object, e As EventArgs) Handles btnguardar.Click
         ActualizaFechaComprobante(cbempresa.SelectedValue, nidEmpresa, dtpfechanueva.Text)
+    End Sub
+
+    Private Sub panel1_Leave(sender As Object, e As EventArgs) Handles panel1.Leave
+        panel1.Visible = False
+    End Sub
+
+    Private Sub dgvlista_DoubleClick(sender As Object, e As EventArgs) Handles dgvlista.DoubleClick
+        Try
+            lblseriecorrelativo.Text = dgvlista.Rows(dgvlista.CurrentRow.Index).Cells(1).Value
+            panel1.Visible = True
+        Catch ex As Exception
+
+        End Try
+
     End Sub
 End Class

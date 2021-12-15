@@ -39,3 +39,15 @@ C:\Users\SERVER\Desktop\FactPro\SUNAT\bin\Debug\SUNAT.exe.config
 C:\Users\SERVER\Desktop\FactPro\SUNAT\obj\Debug\SUNAT.exe
 C:\Users\SERVER\Desktop\FactPro\SUNAT\obj\Debug\SUNAT.xml
 C:\Users\SERVER\Desktop\FactPro\SUNAT\obj\Debug\SUNAT.pdb
+C:\Users\SERVER\Desktop\FactPro\SUNAT\bin\Debug\SUNAT.exe
+C:\Users\SERVER\Desktop\FactPro\SUNAT\bin\Debug\SUNAT.pdb
+C:\Users\SERVER\Desktop\FactPro\SUNAT\bin\Debug\SUNAT.xml
+C:\Users\SERVER\Desktop\FactPro\SUNAT\bin\Debug\CapaSUNAT.exe
+C:\Users\SERVER\Desktop\FactPro\SUNAT\bin\Debug\Ionic.Zip.dll
+C:\Users\SERVER\Desktop\FactPro\SUNAT\bin\Debug\CapaSUNAT.pdb
+C:\Users\SERVER\Desktop\FactPro\SUNAT\bin\Debug\CapaSUNAT.xml
+C:\Users\SERVER\Desktop\FactPro\SUNAT\obj\Debug\SUNAT.vbprojResolveAssemblyReference.cache
+C:\Users\SERVER\Desktop\FactPro\SUNAT\obj\Debug\SUNAT.EnviarCorreo.resources
+C:\Users\SERVER\Desktop\FactPro\SUNAT\obj\Debug\SUNAT.Resources.resources
+C:\Users\SERVER\Desktop\FactPro\SUNAT\obj\Debug\SUNAT.Sunat.resources
+C:\Users\SERVER\Desktop\FactPro\SUNAT\obj\Debug\SUNAT.vbproj.GenerateResource.Cache
