@@ -45,6 +45,7 @@ Namespace CapaSUNAT.ViewModels
         Public Property EmpresaRazonSocial As String
         Public Property EmpresaRUC As String
         Public Property EmpresaDireccion As String
+        Public Property EmisorSucursal As String
         Public Property Cab_Clte_ID_RazonSocial As String
         Public Property Cab_Clte_IdDistrito As String
         Public Property Cab_Clte_Distrito As String
@@ -68,7 +69,7 @@ Namespace CapaSUNAT.ViewModels
         Public Property NumeroCuotas As Integer
         Public Property MontoCuota As Decimal
         Public Property cLeyenda As String
-
+        Public Property AfectacionIGV As Integer
         Public Overridable Property Detalles As ICollection(Of Detalles)
     End Class
 End Namespace

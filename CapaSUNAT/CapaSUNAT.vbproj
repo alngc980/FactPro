@@ -51,12 +51,31 @@
     <Reference Include="Ionic.Zip">
       <HintPath>D:\1 CURSOS\facturacion electronica vb\2 - curso sf vb avanza\Fuentes\Sesion11\vb-avanzado\VB\CapaSUNAT\bin\Debug\Ionic.Zip.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\packages\Microsoft.Office.Interop.Excel.15.0.4795.1000\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.PowerPoint, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\packages\Microsoft.Office.Interop.PowerPoint.15.0.4420.1017\lib\net20\Microsoft.Office.Interop.PowerPoint.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Word, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\packages\Microsoft.Office.Interop.Word.15.0.4797.1003\lib\net20\Microsoft.Office.Interop.Word.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Annotations">
+      <HintPath>..\..\RestCsharp-main\packages\System.ComponentModel.Annotations.5.0.0\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
+    </Reference>
     <Reference Include="System.configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.OracleClient" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.IdentityModel" />
     <Reference Include="System.IO.Compression" />
     <Reference Include="System.IO.Compression.FileSystem" />
     <Reference Include="System.Net" />
@@ -140,12 +159,19 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Service References\SRConsultaWs\Reference.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Servicios\SUNAT_Envios.vb" />
     <Compile Include="Util\Helper.vb" />
     <Compile Include="ViewModels\Cabecera.vb" />
     <Compile Include="ViewModels\Detalles.vb" />
     <Compile Include="ViewModels\GuiaRemision.vb" />
     <Compile Include="ViewModels\GUIA_REMISION.vb" />
+    <Compile Include="ViewModels\Ldetalleventas.vb" />
+    <Compile Include="ViewModels\Lventas.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">
@@ -168,6 +194,7 @@
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="packages.config" />
     <None Include="Service References\ServiceGuia\billService.wsdl" />
     <None Include="Service References\ServiceGuia\billService.xsd">
       <SubType>Designer</SubType>
@@ -209,6 +236,20 @@
     <None Include="Service References\ServiceSunat\CapaSUNAT.ServiceSunat.statusResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\SRConsultaWs\billConsultService.wsdl" />
+    <None Include="Service References\SRConsultaWs\billConsultService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SRConsultaWs\billConsultService1.wsdl" />
+    <None Include="Service References\SRConsultaWs\CapaSUNAT.SRConsultaWs.getStatusCdrResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SRConsultaWs\CapaSUNAT.SRConsultaWs.getStatusResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SRConsultaWs\CapaSUNAT.SRConsultaWs.statusResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
@@ -216,6 +257,7 @@
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\ServiceGuia\" />
     <WCFMetadataStorage Include="Service References\ServiceSunat\" />
+    <WCFMetadataStorage Include="Service References\SRConsultaWs\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\ServiceSunat\configuration91.svcinfo" />
@@ -241,7 +283,18 @@
       <LastGenOutput>Reference.vb</LastGenOutput>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Service References\SRConsultaWs\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SRConsultaWs\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SRConsultaWs\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.vb</LastGenOutput>
+    </None>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

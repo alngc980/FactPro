@@ -168,7 +168,7 @@ Namespace CapaSUNAT.Servicios
                 Dim addrestypecode As CapaSUNAT.Modelos.AddressTypeCodeType = New CapaSUNAT.Modelos.AddressTypeCodeType()
                 addrestypecode.listName = "Establecimientos anexos"
                 addrestypecode.listAgencyName = "PE:SUNAT"
-                addrestypecode.Value = "0000"
+                addrestypecode.Value = Comprobante.EmisorSucursal                                       'ANGC20211229 ESTABLECIMIENTOS
                 direccion.AddressTypeCode = addrestypecode
                 PartyTaxScheme.RegistrationAddress = direccion
 
@@ -200,7 +200,7 @@ Namespace CapaSUNAT.Servicios
                 Dim address_TypeCodeType As Modelos.AddressTypeCodeType = New Modelos.AddressTypeCodeType()
                 address_TypeCodeType.listName = "Establecimientos anexos"
                 address_TypeCodeType.listAgencyName = "PE:SUNAT"
-                address_TypeCodeType.Value = "0000"
+                address_TypeCodeType.Value = Comprobante.EmisorSucursal '"0000"
                 direccionPL.AddressTypeCode = address_TypeCodeType
 
                 Dim Departamento As CapaSUNAT.Modelos.CityNameType = New CapaSUNAT.Modelos.CityNameType()       'ANGC ME PARECE DIRECCION DEL EMISOR
@@ -363,7 +363,13 @@ Namespace CapaSUNAT.Servicios
                         fechapagocuota.Value = Convert.ToDateTime(fechaPago)
                         pagoCuota.PaymentDueDate = fechapagocuota
 
-                        idpagoCuota.Value = "Cuota" & i.ToString().PadLeft(3, "0")
+                        Dim tipoformapagos2 As New List(Of Modelos.PaymentMeansIDType)
+                        Dim tipoformapagoo As New Modelos.PaymentMeansIDType
+                        tipoformapagoo.Value = "Cuota" & i.ToString().PadLeft(3, "0")
+                        tipoformapagos2.Add(tipoformapagoo)
+                        pagoCuota.PaymentMeansID = tipoformapagos2.ToArray
+
+                        idpagoCuota.Value = "FormaPago"
                         pagoCuota.ID = idpagoCuota
                         pagosCuotas.Add(pagoCuota)
                     Next
@@ -418,7 +424,13 @@ Namespace CapaSUNAT.Servicios
                 idTotal.Value = "S"
 
                 Dim nametypeImpto As CapaSUNAT.Modelos.NameType1 = New CapaSUNAT.Modelos.NameType1()
-                nametypeImpto.Value = "EXO" '"IGV"
+
+                If Comprobante.AfectacionIGV = 0 Then   'SI ES EXONERADO
+                    nametypeImpto.Value = "EXO"
+                Else
+                    nametypeImpto.Value = "IGV"
+                End If
+
 
                 Dim taxtypecodeImpto As CapaSUNAT.Modelos.TaxTypeCodeType = New CapaSUNAT.Modelos.TaxTypeCodeType()
                 taxtypecodeImpto.Value = "VAT"
@@ -427,7 +439,12 @@ Namespace CapaSUNAT.Servicios
                 idTot.schemeURI = "urn:pe:gob:sunat:cpe:see:gem:catalogos:catalogo05"
                 idTot.schemeAgencyName = "PE:SUNAT"
                 idTot.schemeName = "Codigo de tributos"
-                idTot.Value = "9997" '"1000"
+                If Comprobante.AfectacionIGV = 0 Then 'SI ES EXONERADO
+                    idTot.Value = "9997"
+                Else
+                    idTot.Value = "1000"
+                End If
+
                 taxScheme.ID = idTot
 
                 Dim nametypeImptoIGV As CapaSUNAT.Modelos.NameType1 = New CapaSUNAT.Modelos.NameType1()
@@ -533,7 +550,13 @@ Namespace CapaSUNAT.Servicios
 
                     Dim ValorVenta As CapaSUNAT.Modelos.LineExtensionAmountType = New CapaSUNAT.Modelos.LineExtensionAmountType()
                     ValorVenta.currencyID = Comprobante.Idmoneda
-                    ValorVenta.Value = Convert.ToDecimal(String.Format("{0:0.00}", det.Total)) 'Convert.ToDecimal(String.Format("{0:0.00}", det.Total / 1.18D))
+
+                    If Comprobante.AfectacionIGV = 0 Then
+                        ValorVenta.Value = Convert.ToDecimal(String.Format("{0:0.00}", det.Total)) 'Convert.ToDecimal(String.Format("{0:0.00}", det.Total / 1.18D))
+                    Else
+                        ValorVenta.Value = Convert.ToDecimal(String.Format("{0:0.00}", det.Total / 1.18D))
+                    End If
+
                     item.LineExtensionAmount = ValorVenta
 
                     Dim ValorReferenUnitario As CapaSUNAT.Modelos.PricingReferenceType = New CapaSUNAT.Modelos.PricingReferenceType()
@@ -558,19 +581,32 @@ Namespace CapaSUNAT.Servicios
                     Dim Totales_Item As CapaSUNAT.Modelos.TaxTotalType = New CapaSUNAT.Modelos.TaxTotalType()
                     Dim Total_Item As CapaSUNAT.Modelos.TaxAmountType = New CapaSUNAT.Modelos.TaxAmountType()
                     Total_Item.currencyID = Comprobante.Idmoneda
-                    Total_Item.Value = 0 'Convert.ToDecimal(String.Format("{0:0.00}", det.mtoValorVentaItem - (det.mtoValorVentaItem / 1.18D)))
-                    Totales_Item.TaxAmount = Total_Item                                         '' ESTO ES VALOR IGV
+                    If Comprobante.AfectacionIGV = 0 Then 'SI ES EXONERADO
+                        Total_Item.Value = 0
+                    Else
+                        Total_Item.Value = Convert.ToDecimal(String.Format("{0:0.00000}", det.mtoValorVentaItem - (det.mtoValorVentaItem / 1.18D)))
+                    End If
+                    Totales_Item.TaxAmount = Total_Item
 
                     Dim subtotal_Items As List(Of CapaSUNAT.Modelos.TaxSubtotalType) = New List(Of CapaSUNAT.Modelos.TaxSubtotalType)()
                     Dim subtotal_Item As CapaSUNAT.Modelos.TaxSubtotalType = New CapaSUNAT.Modelos.TaxSubtotalType()
                     Dim taxsubtotal_IGVItem As CapaSUNAT.Modelos.TaxableAmountType = New CapaSUNAT.Modelos.TaxableAmountType()
                     taxsubtotal_IGVItem.currencyID = Comprobante.Idmoneda
-                    taxsubtotal_IGVItem.Value = Convert.ToDecimal(String.Format("{0:0.00}", det.mtoValorVentaItem)) 'Convert.ToDecimal(String.Format("{0:0.00}", det.mtoValorVentaItem / 1.18D))
+                    If Comprobante.AfectacionIGV = 0 Then 'SI ES EXONERADO
+                        taxsubtotal_IGVItem.Value = Convert.ToDecimal(String.Format("{0:0.00}", det.mtoValorVentaItem))
+                    Else
+                        taxsubtotal_IGVItem.Value = Convert.ToDecimal(String.Format("{0:0.00000}", det.mtoValorVentaItem / 1.18D))
+                    End If
                     subtotal_Item.TaxableAmount = taxsubtotal_IGVItem                           '' VALOR DE VENTA
 
                     Dim TotalTaxAmount_IGVItem As CapaSUNAT.Modelos.TaxAmountType = New CapaSUNAT.Modelos.TaxAmountType()
                     TotalTaxAmount_IGVItem.currencyID = Comprobante.Idmoneda
-                    TotalTaxAmount_IGVItem.Value = Convert.ToDecimal(String.Format("{0:0.00}", 0))  'Convert.ToDecimal(String.Format("{0:0.00}", det.mtoValorVentaItem - (det.mtoValorVentaItem / 1.18D)))
+                    If Comprobante.AfectacionIGV = 0 Then 'SI ES EXONERADO
+                        TotalTaxAmount_IGVItem.Value = Convert.ToDecimal(String.Format("{0:0.00}", 0))
+                    Else
+                        TotalTaxAmount_IGVItem.Value = Convert.ToDecimal(String.Format("{0:0.00000}", det.mtoValorVentaItem - (det.mtoValorVentaItem / 1.18D)))
+                    End If
+
                     subtotal_Item.TaxAmount = TotalTaxAmount_IGVItem
                     subtotal_Items.Add(subtotal_Item)
                     Totales_Item.TaxSubtotal = subtotal_Items.ToArray()
@@ -583,7 +619,12 @@ Namespace CapaSUNAT.Servicios
                     idTaxCategoria.Value = "S"
 
                     Dim porcentaje As Modelos.PercentType1 = New Modelos.PercentType1()
-                    porcentaje.Value = Convert.ToDecimal("0.00") * 100  'Convert.ToDecimal(det.porIgvItem) * 100
+                    If Comprobante.AfectacionIGV = 0 Then 'SI ES EXONERADO
+                        porcentaje.Value = Convert.ToDecimal("0.00") * 100
+                    Else
+                        porcentaje.Value = Convert.ToDecimal(det.porIgvItem) * 100  'Convert.ToDecimal(det.porIgvItem) * 100
+                    End If
+
                     taxcategory_IGVItem.Percent = porcentaje
                     subtotal_Item.TaxCategory = taxcategory_IGVItem
 
@@ -591,7 +632,12 @@ Namespace CapaSUNAT.Servicios
                     ReasonCode.listURI = "urn:pe:gob:sunat:cpe:see:gem:catalogos:catalogo07"
                     ReasonCode.listName = "Afectacion del IGV"
                     ReasonCode.listAgencyName = "PE:SUNAT"
-                    ReasonCode.Value = "20" '"10"
+                    If Comprobante.AfectacionIGV = 0 Then 'SI ES EXONERADO
+                        ReasonCode.Value = "20"
+                    Else
+                        ReasonCode.Value = "10"
+                    End If
+
                     taxcategory_IGVItem.TaxExemptionReasonCode = ReasonCode
 
                     Dim taxscheme_IGVItem As CapaSUNAT.Modelos.TaxSchemeType = New CapaSUNAT.Modelos.TaxSchemeType()
@@ -599,11 +645,21 @@ Namespace CapaSUNAT.Servicios
                     id2_IGVItem.schemeURI = "urn:pe:gob:sunat:cpe:see:gem:catalogos:catalogo05"
                     id2_IGVItem.schemeAgencyName = "PE:SUNAT"
                     id2_IGVItem.schemeName = "Codigo de tributos"
-                    id2_IGVItem.Value = "9997" '"1000"
+                    If Comprobante.AfectacionIGV = 0 Then 'SI ES EXONERADO
+                        id2_IGVItem.Value = "9997"
+                    Else
+                        id2_IGVItem.Value = "1000"
+                    End If
+
                     taxscheme_IGVItem.ID = id2_IGVItem
 
                     Dim nombreImpto_IGVItem As CapaSUNAT.Modelos.NameType1 = New CapaSUNAT.Modelos.NameType1()
-                    nombreImpto_IGVItem.Value = "EXO"   '"IGV"
+                    If Comprobante.AfectacionIGV = 0 Then 'SI ES EXONERADO
+                        nombreImpto_IGVItem.Value = "EXO"
+                    Else
+                        nombreImpto_IGVItem.Value = "IGV"
+                    End If
+
                     taxscheme_IGVItem.Name = nombreImpto_IGVItem
                     Dim nombreImpto_IGVItemInter As CapaSUNAT.Modelos.TaxTypeCodeType = New CapaSUNAT.Modelos.TaxTypeCodeType()
                     nombreImpto_IGVItemInter.Value = "VAT"
@@ -663,7 +719,12 @@ Namespace CapaSUNAT.Servicios
 
                     Dim PrecioProducto As CapaSUNAT.Modelos.PriceType = New CapaSUNAT.Modelos.PriceType()
                     Dim PrecioMontoTipo As CapaSUNAT.Modelos.PriceAmountType = New CapaSUNAT.Modelos.PriceAmountType()
-                    PrecioMontoTipo.Value = Convert.ToDecimal(String.Format("{0:0.00}", det.Precio))    'Convert.ToDecimal(String.Format("{0:0.00}", det.Precio / (det.porIgvItem + 1))) 'VALOR DE VENTA
+                    If Comprobante.AfectacionIGV = 0 Then 'SI ES EXONERADO
+                        PrecioMontoTipo.Value = Convert.ToDecimal(String.Format("{0:0.00}", det.Precio))
+                    Else
+                        PrecioMontoTipo.Value = Convert.ToDecimal(String.Format("{0:0.00}", det.mtoValorVentaItem / (det.porIgvItem + 1))) 'VALOR DE VENTA
+                    End If
+
                     PrecioMontoTipo.currencyID = Comprobante.Idmoneda
                     PrecioProducto.PriceAmount = PrecioMontoTipo
 
@@ -983,7 +1044,7 @@ Namespace CapaSUNAT.Servicios
             End Try
         End Function
 
-        Function GenerarComprobanteNC_XML(ByVal Comprobante As Cabecera) As Integer
+        Function GenerarComprobanteNC_XML(ByVal Comprobante As Cabecera, ByVal CondicionPago As DataTable) As Integer
             Dim Factura As CapaSUNAT.Modelos.CreditNoteType = New CapaSUNAT.Modelos.CreditNoteType()
 
             Try
@@ -1109,7 +1170,7 @@ Namespace CapaSUNAT.Servicios
                 Dim addrestypecode As CapaSUNAT.Modelos.AddressTypeCodeType = New CapaSUNAT.Modelos.AddressTypeCodeType()
                 addrestypecode.listName = "Establecimientos anexos"
                 addrestypecode.listAgencyName = "PE:SUNAT"
-                addrestypecode.Value = "0000"
+                addrestypecode.Value = Comprobante.EmisorSucursal '"0000"
 
                 Dim taxSchema As Modelos.TaxSchemeType = New Modelos.TaxSchemeType()
                 Dim idsupplier As Modelos.IDType = New Modelos.IDType()
@@ -1136,7 +1197,7 @@ Namespace CapaSUNAT.Servicios
                 Dim address_TypeCodeType As Modelos.AddressTypeCodeType = New Modelos.AddressTypeCodeType()
                 address_TypeCodeType.listName = "Establecimientos anexos"
                 address_TypeCodeType.listAgencyName = "PE:SUNAT"
-                address_TypeCodeType.Value = "0001"
+                address_TypeCodeType.Value = Comprobante.EmisorSucursal '"0000"
                 direccionPL.AddressTypeCode = address_TypeCodeType
 
                 Dim Departamento As CapaSUNAT.Modelos.CityNameType = New CapaSUNAT.Modelos.CityNameType()
@@ -1292,14 +1353,17 @@ Namespace CapaSUNAT.Servicios
                 idTotal.Value = "S"
 
                 Dim nametypeImpto As CapaSUNAT.Modelos.NameType1 = New CapaSUNAT.Modelos.NameType1()
-                nametypeImpto.Value = "IGV"
+                'nametypeImpto.Value = "IGV"
+                nametypeImpto.Value = "EXO"
+
                 Dim taxtypecodeImpto As CapaSUNAT.Modelos.TaxTypeCodeType = New CapaSUNAT.Modelos.TaxTypeCodeType()
                 taxtypecodeImpto.Value = "VAT"
                 Dim idTot As CapaSUNAT.Modelos.IDType = New CapaSUNAT.Modelos.IDType()
                 idTot.schemeURI = "urn:pe:gob:sunat:cpe:see:gem:catalogos:catalogo05"
                 idTot.schemeAgencyName = "PE:SUNAT"
                 idTot.schemeName = "Codigo de tributos"
-                idTot.Value = "1000"
+                'idTot.Value = "1000"
+                idTot.Value = "9997"
                 taxScheme.ID = idTot
 
                 Dim nametypeImptoIGV As CapaSUNAT.Modelos.NameType1 = New CapaSUNAT.Modelos.NameType1()
@@ -1342,6 +1406,7 @@ Namespace CapaSUNAT.Servicios
                 Dim ImporteTotalVenta As CapaSUNAT.Modelos.PayableAmountType = New CapaSUNAT.Modelos.PayableAmountType()
                 ImporteTotalVenta.currencyID = Comprobante.Idmoneda
                 ImporteTotalVenta.Value = Convert.ToDecimal(String.Format("{0:0.00}", Comprobante.TotNeto))
+
                 TotalValorVenta.LineExtensionAmount = TValorVenta
                 TotalValorVenta.TaxInclusiveAmount = TotalPrecioVenta
                 TotalValorVenta.AllowanceTotalAmount = MtoTotalDsctos
@@ -1355,6 +1420,7 @@ Namespace CapaSUNAT.Servicios
                 'Detalles del comprobante
                 '***********************************************************************************************************************************************************************
                 For Each det As Detalles In Comprobante.Detalles
+
                     Dim item As CapaSUNAT.Modelos.CreditNoteLineType = New CapaSUNAT.Modelos.CreditNoteLineType()
                     Dim numeroItem As CapaSUNAT.Modelos.IDType = New CapaSUNAT.Modelos.IDType()
                     numeroItem.Value = iditem.ToString()
@@ -1367,7 +1433,8 @@ Namespace CapaSUNAT.Servicios
                     item.CreditedQuantity = cantidad
                     Dim ValorVenta As CapaSUNAT.Modelos.LineExtensionAmountType = New CapaSUNAT.Modelos.LineExtensionAmountType()
                     ValorVenta.currencyID = Comprobante.Idmoneda
-                    ValorVenta.Value = Convert.ToDecimal(String.Format("{0:0.00}", det.Total / 1.18D))
+                    'ValorVenta.Value = Convert.ToDecimal(String.Format("{0:0.00}", det.Total / 1.18D))
+                    ValorVenta.Value = Convert.ToDecimal(String.Format("{0:0.00}", det.Total))
                     item.LineExtensionAmount = ValorVenta
                     Dim ValorReferenUnitario As CapaSUNAT.Modelos.PricingReferenceType = New CapaSUNAT.Modelos.PricingReferenceType()
                     Dim TipoPrecios As CapaSUNAT.Modelos.PriceType() = New CapaSUNAT.Modelos.PriceType(1) {}
@@ -1389,17 +1456,20 @@ Namespace CapaSUNAT.Servicios
                     Dim Totales_Item As CapaSUNAT.Modelos.TaxTotalType = New CapaSUNAT.Modelos.TaxTotalType()
                     Dim Total_Item As CapaSUNAT.Modelos.TaxAmountType = New CapaSUNAT.Modelos.TaxAmountType()
                     Total_Item.currencyID = Comprobante.Idmoneda
-                    Total_Item.Value = Convert.ToDecimal(String.Format("{0:0.00}", det.mtoValorVentaItem - (det.mtoValorVentaItem / 1.18D)))
+                    'Total_Item.Value = Convert.ToDecimal(String.Format("{0:0.00}", det.mtoValorVentaItem - (det.mtoValorVentaItem / 1.18D)))
+                    Total_Item.Value = 0
                     Totales_Item.TaxAmount = Total_Item
                     Dim subtotal_Items As CapaSUNAT.Modelos.TaxSubtotalType() = New CapaSUNAT.Modelos.TaxSubtotalType(1) {}
                     Dim subtotal_Item As CapaSUNAT.Modelos.TaxSubtotalType = New CapaSUNAT.Modelos.TaxSubtotalType()
                     Dim taxsubtotal_IGVItem As CapaSUNAT.Modelos.TaxableAmountType = New CapaSUNAT.Modelos.TaxableAmountType()
                     taxsubtotal_IGVItem.currencyID = Comprobante.Idmoneda
-                    taxsubtotal_IGVItem.Value = Convert.ToDecimal(String.Format("{0:0.00}", det.mtoValorVentaItem / 1.18D))
+                    'taxsubtotal_IGVItem.Value = Convert.ToDecimal(String.Format("{0:0.00}", det.mtoValorVentaItem / 1.18D))
+                    taxsubtotal_IGVItem.Value = Convert.ToDecimal(String.Format("{0:0.00}", det.mtoValorVentaItem))
                     subtotal_Item.TaxableAmount = taxsubtotal_IGVItem
                     Dim TotalTaxAmount_IGVItem As CapaSUNAT.Modelos.TaxAmountType = New CapaSUNAT.Modelos.TaxAmountType()
                     TotalTaxAmount_IGVItem.currencyID = Comprobante.Idmoneda
-                    TotalTaxAmount_IGVItem.Value = Convert.ToDecimal(String.Format("{0:0.00}", det.mtoValorVentaItem - (det.mtoValorVentaItem / 1.18D)))
+                    'TotalTaxAmount_IGVItem.Value = Convert.ToDecimal(String.Format("{0:0.00}", det.mtoValorVentaItem - (det.mtoValorVentaItem / 1.18D)))
+                    TotalTaxAmount_IGVItem.Value = Convert.ToDecimal(String.Format("{0:0.00}", 0))
                     subtotal_Item.TaxAmount = TotalTaxAmount_IGVItem
                     subtotal_Items(0) = subtotal_Item
                     Totales_Item.TaxSubtotal = subtotal_Items
@@ -1410,24 +1480,28 @@ Namespace CapaSUNAT.Servicios
                     idTaxCategoria.schemeID = "UN/ECE 5305"
                     idTaxCategoria.Value = "S"
                     Dim porcentaje As Modelos.PercentType1 = New Modelos.PercentType1()
-                    porcentaje.Value = Convert.ToDecimal(det.porIgvItem) * 100
+                    'porcentaje.Value = Convert.ToDecimal(det.porIgvItem) * 100
+                    porcentaje.Value = Convert.ToDecimal("0.00") * 100
                     taxcategory_IGVItem.Percent = porcentaje
                     subtotal_Item.TaxCategory = taxcategory_IGVItem
                     Dim ReasonCode As Modelos.TaxExemptionReasonCodeType = New Modelos.TaxExemptionReasonCodeType()
                     ReasonCode.listURI = "urn:pe:gob:sunat:cpe:see:gem:catalogos:catalogo07"
                     ReasonCode.listName = "Afectacion del IGV"
                     ReasonCode.listAgencyName = "PE:SUNAT"
-                    ReasonCode.Value = "10"
+                    'ReasonCode.Value = "10"
+                    ReasonCode.Value = "20"
                     taxcategory_IGVItem.TaxExemptionReasonCode = ReasonCode
                     Dim taxscheme_IGVItem As CapaSUNAT.Modelos.TaxSchemeType = New CapaSUNAT.Modelos.TaxSchemeType()
                     Dim id2_IGVItem As CapaSUNAT.Modelos.IDType = New CapaSUNAT.Modelos.IDType()
                     id2_IGVItem.schemeURI = "urn:pe:gob:sunat:cpe:see:gem:catalogos:catalogo05"
                     id2_IGVItem.schemeAgencyName = "PE:SUNAT"
                     id2_IGVItem.schemeName = "Codigo de tributos"
-                    id2_IGVItem.Value = "1000"
+                    'id2_IGVItem.Value = "1000"
+                    id2_IGVItem.Value = "9997"
                     taxscheme_IGVItem.ID = id2_IGVItem
                     Dim nombreImpto_IGVItem As CapaSUNAT.Modelos.NameType1 = New CapaSUNAT.Modelos.NameType1()
-                    nombreImpto_IGVItem.Value = "IGV"
+                    'nombreImpto_IGVItem.Value = "IGV"
+                    nombreImpto_IGVItem.Value = "EXO"
                     taxscheme_IGVItem.Name = nombreImpto_IGVItem
                     Dim nombreImpto_IGVItemInter As CapaSUNAT.Modelos.TaxTypeCodeType = New CapaSUNAT.Modelos.TaxTypeCodeType()
                     nombreImpto_IGVItemInter.Value = "VAT"
@@ -1447,7 +1521,9 @@ Namespace CapaSUNAT.Servicios
                     codigoProd.ID = id
                     Dim PrecioProducto As CapaSUNAT.Modelos.PriceType = New CapaSUNAT.Modelos.PriceType()
                     Dim PrecioMontoTipo As CapaSUNAT.Modelos.PriceAmountType = New CapaSUNAT.Modelos.PriceAmountType()
-                    PrecioMontoTipo.Value = Convert.ToDecimal(String.Format("{0:0.00}", det.Precio / (det.porIgvItem + 1)))
+                    'PrecioMontoTipo.Value = Convert.ToDecimal(String.Format("{0:0.00}", det.Precio / (det.porIgvItem + 1)))
+                    PrecioMontoTipo.Value = Convert.ToDecimal(String.Format("{0:0.00}", det.Precio))
+
                     PrecioMontoTipo.currencyID = Comprobante.Idmoneda
                     PrecioProducto.PriceAmount = PrecioMontoTipo
                     Dim itemTipo As CapaSUNAT.Modelos.ItemType = New CapaSUNAT.Modelos.ItemType()
@@ -1480,14 +1556,14 @@ Namespace CapaSUNAT.Servicios
                 Comprimir(archXML, strEnvio)
                 'Enviar a SUNAT
                 EnviarDocumento(strEnvio)
-                Return 1
+                Return "0"
             Catch ex As Exception
                 Throw New Exception(ex.Message)
             End Try
         End Function
 
         Function GenerarResumenDiario_XML(ByVal Fecha As DateTime, ByVal EmpresaRUC As String, ByVal EmpresaRazonSocial As String,
-                                          ByVal dsResumen As System.Data.DataSet, ByVal nIdCorrelativo As Integer) As String
+                                          ByVal dsResumen As System.Data.DataSet, ByVal nIdCorrelativo As Integer, ByVal nAfectacion As Integer) As String
             Dim Resumen As Resumenes.SummaryDocumentsType = New Resumenes.SummaryDocumentsType()
             Dim numTicket As String = ""
 
@@ -1509,7 +1585,7 @@ Namespace CapaSUNAT.Servicios
                     Resumen.CustomizationID = New Resumenes.CustomizationIDType()
                     Resumen.CustomizationID.Value = "1.1"
                     Resumen.ID = New Resumenes.IDType()
-                    Resumen.ID.Value = "RC-" & Fecha.ToString("yyyyMMdd") & "-001"
+                    Resumen.ID.Value = "RC-" & Fecha.ToString("yyyyMMdd") & nIdCorrelativo.ToString().PadLeft(3, "0"c) ' "-001"
                     Dim FechaEmision As Resumenes.ReferenceDateType = New Resumenes.ReferenceDateType()
                     FechaEmision.Value = Convert.ToDateTime(dsResumen.Tables(0).Rows(0)(5))
                     Resumen.ReferenceDate = FechaEmision
@@ -1575,9 +1651,9 @@ Namespace CapaSUNAT.Servicios
                     empresa.Party = party
                     Resumen.AccountingSupplierParty = empresa
 
-                    Dim items As Resumenes.SummaryDocumentsLineType() = New Resumenes.SummaryDocumentsLineType(99) {}
+                    Dim items As Resumenes.SummaryDocumentsLineType() = New Resumenes.SummaryDocumentsLineType(499) {}
                     Dim iditem As Integer = 1
-                    Dim TotalesTributos As Resumenes.TaxTotalType() = New Resumenes.TaxTotalType(99) {}
+                    Dim TotalesTributos As Resumenes.TaxTotalType() = New Resumenes.TaxTotalType(499) {}
 
                     For Each reg As System.Data.DataRow In dsResumen.Tables(0).Rows
 
@@ -1615,7 +1691,7 @@ Namespace CapaSUNAT.Servicios
                             Total.currencyID = CurrencyCodeContentType.USD
                         End If
 
-                        Total.Value = Convert.ToDecimal(reg(8))
+                        Total.Value = Convert.ToDecimal(reg(8))                                             '-->>
                         item.TotalAmount = Total
                         Dim PagoSubtotal As Resumenes.PaymentType = New Resumenes.PaymentType()
                         Dim PagoSubtotals As Resumenes.PaymentType() = New Resumenes.PaymentType(1) {}
@@ -1628,8 +1704,12 @@ Namespace CapaSUNAT.Servicios
                         ElseIf reg(13).ToString() = "USD" Then
                             Total.currencyID = CurrencyCodeContentType.USD
                         End If
+                        If nAfectacion = 0 Then
+                            SubTotal.Value = Convert.ToDecimal(reg(8))                                          '-->>
+                        Else
+                            SubTotal.Value = Math.Round((reg(8) / 1.18D), 2)
+                        End If
 
-                        SubTotal.Value = Convert.ToDecimal(reg(8))
                         Dim Tipo As Resumenes.InstructionIDType = New Resumenes.InstructionIDType()
                         Tipo.Value = "01"
                         PagoSubtotal.PaidAmount = SubTotal
@@ -1675,7 +1755,11 @@ Namespace CapaSUNAT.Servicios
                         Dim Total_IGVItem As Resumenes.TaxTotalType = New Resumenes.TaxTotalType()
                         Dim Total_ItemIGV As Resumenes.TaxAmountType = New Resumenes.TaxAmountType()
                         Total_ItemIGV.currencyID = CurrencyCodeContentType.PEN
-                        Total_ItemIGV.Value = "0"   'Convert.ToDecimal(reg("TOT_IGV"))
+                        If nAfectacion = 0 Then
+                            Total_ItemIGV.Value = "0"   'Convert.ToDecimal(reg("TOT_IGV"))
+                        Else
+                            Total_ItemIGV.Value = Math.Round(reg(8) - (reg(8) / 1.18D), 2)
+                        End If
 
                         If reg(13).ToString() = "PEN" Then
                             Total.currencyID = CurrencyCodeContentType.PEN
@@ -1772,7 +1856,7 @@ Namespace CapaSUNAT.Servicios
             End Try
         End Function
 
-        Function GenerarComunicacionBaja_XML(ByVal Fecha As DateTime, ByVal EmpresaRUC As String, ByVal EmpresaRazonSocial As String, ByVal TipoDocumento As String, ByVal SerieDocumento As String, ByVal NumeroDocumento As String, ByVal MotivoBaja As String) As String
+        Function GenerarComunicacionBaja_XML(ByVal Fecha As DateTime, ByVal EmpresaRUC As String, ByVal EmpresaRazonSocial As String, ByVal TipoDocumento As String, ByVal SerieDocumento As String, ByVal NumeroDocumento As String, ByVal MotivoBaja As String, ByVal cCorrelativoBaja As Integer) As String
             Dim Baja As Bajas.VoidedDocumentsType = New Bajas.VoidedDocumentsType()
             Dim numTicket As String = ""
 
@@ -1791,12 +1875,12 @@ Namespace CapaSUNAT.Servicios
                 Baja.CustomizationID = New Bajas.CustomizationIDType()
                 Baja.CustomizationID.Value = "1.0"
                 Baja.ID = New Bajas.IDType()
-                Baja.ID.Value = "RA-" & DateTime.Now.ToString("yyyyMMdd") & "-001"
+                Baja.ID.Value = "RA-" & Fecha.ToString("yyyyMMdd") & "-" & cCorrelativoBaja.ToString().PadLeft(3, "0"c)
                 Dim FechaEmision As Bajas.ReferenceDateType = New Bajas.ReferenceDateType()
                 FechaEmision.Value = Fecha
                 Baja.ReferenceDate = FechaEmision
                 Baja.IssueDate = New Bajas.IssueDateType()
-                Dim fechaGeneracion As DateTime = DateTime.Now.Date
+                Dim fechaGeneracion As DateTime = Fecha.Date
                 Baja.IssueDate.Value = Convert.ToDateTime(fechaGeneracion)
                 Dim Firma As Bajas.SignatureType = New Bajas.SignatureType()
                 Dim Firmas As Bajas.SignatureType() = New Bajas.SignatureType(1) {}
@@ -1870,7 +1954,8 @@ Namespace CapaSUNAT.Servicios
                 Baja.VoidedDocumentsLine = ItemsBajas
 
                 'Enviar a SUNAT
-                Dim archXML As String = GenerarComunicacionBaja(Baja, Fecha, "RA", 1, EmpresaRUC)
+
+                Dim archXML As String = GenerarComunicacionBaja(Baja, Fecha, "RA", cCorrelativoBaja, EmpresaRUC)
                 FirmarXML(archXML, Ruta_Certificado, Password_Certificado)
                 Dim strEnvio As String = Ruta_ENVIOS & Path.GetFileName(archXML).Replace(".xml", ".zip")
                 Comprimir(archXML, strEnvio)
@@ -1946,7 +2031,7 @@ Namespace CapaSUNAT.Servicios
             Dim setting As XmlWriterSettings = New XmlWriterSettings()
             setting.Indent = True
             setting.IndentChars = vbTab
-            Dim ArchivoXML As String = RUCEmpresa & "-" & TipoDocumento & "-" & DateTime.Now.ToString("yyyyMMdd") & "-" & correlativo.ToString().PadLeft(3, "0"c)
+            Dim ArchivoXML As String = RUCEmpresa & "-" & TipoDocumento & "-" & Fecha.ToString("yyyyMMdd") & "-" & correlativo.ToString().PadLeft(3, "0"c)
             Dim rutaXML As String = String.Format("{0}{1}.xml", Ruta_XML, ArchivoXML)
 
             Using writer As XmlWriter = XmlWriter.Create(rutaXML, setting)
@@ -2192,6 +2277,23 @@ Namespace CapaSUNAT.Servicios
                 Throw New Exception(ex.Code.Name)
             End Try
         End Function
+        'Function ObtenerEstado(ByVal Ruc As String, ByVal nTipoDoc As String, ByVal nSerie As String, ByVal nCorrelativo As String) As String
+        '    Dim strRetorno As String = ""
+
+        '    Try
+
+        '        Using servicio As ServiceSunat.billServiceClient = New billServiceClient()
+        '            servicio.Open()
+        '            Dim returnstring As statusResponse = servicio.get()
+        '            strRetorno = returnstring.statusCode
+        '            servicio.Close()
+        '            Return strRetorno
+        '        End Using
+
+        '    Catch ex As System.ServiceModel.FaultException
+        '        Throw New Exception(ex.Code.Name)
+        '    End Try
+        'End Function
 
         Function GenerarComprobanteND_XML(ByVal Comprobante As Cabecera) As Integer
             Dim Factura As CapaSUNAT.Modelos.DebitNoteType = New CapaSUNAT.Modelos.DebitNoteType()
@@ -2697,5 +2799,30 @@ Namespace CapaSUNAT.Servicios
                 Throw New Exception(ex.Message)
             End Try
         End Function
+
+
+        Public Function ConsultaEstadoCPE_Ws(ByVal RUC As String, ByVal TipoDoc As String, ByVal cSerie As String, ByVal cCorrelativo As Integer) As String
+
+            'ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls
+            ServicePointManager.SecurityProtocol = ServicePointManager.SecurityProtocol Or SecurityProtocolType.Tls
+            Dim service = New SRConsultaWs.billServiceClient()
+
+            Dim result = service.getStatus(RUC, TipoDoc, cSerie, cCorrelativo)
+            ConsultaEstadoCPE_Ws = cSerie.ToString + "-" + cCorrelativo.ToString + " " + result.statusCode + " -> " + result.statusMessage
+
+        End Function
+
+
+
+
+        'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+
+
+
+
+
+
+
     End Class
 End Namespace

@@ -16,5 +16,6 @@ Namespace CapaSUNAT.ViewModels
         Public Property Usuario As String
         Public Property Igv As Decimal?
         Public Property Descuento As Decimal?
+        Public Property AfectacionIGV As Integer
     End Class
 End Namespace

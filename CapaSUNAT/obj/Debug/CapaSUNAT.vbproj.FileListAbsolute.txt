@@ -40,3 +40,13 @@ C:\Users\SERVER\Desktop\FactPro\CapaSUNAT\obj\Debug\CapaSUNAT.vbproj.GenerateRes
 C:\Users\SERVER\Desktop\FactPro\CapaSUNAT\obj\Debug\CapaSUNAT.exe
 C:\Users\SERVER\Desktop\FactPro\CapaSUNAT\obj\Debug\CapaSUNAT.xml
 C:\Users\SERVER\Desktop\FactPro\CapaSUNAT\obj\Debug\CapaSUNAT.pdb
+C:\Users\angc\Desktop\FactPro\CapaSUNAT\obj\Debug\CapaSUNAT.vbprojResolveAssemblyReference.cache
+C:\Users\angc\Desktop\FactPro\CapaSUNAT\obj\Debug\CapaSUNAT.Resources.resources
+C:\Users\angc\Desktop\FactPro\CapaSUNAT\obj\Debug\CapaSUNAT.vbproj.GenerateResource.Cache
+C:\Users\angc\Desktop\FactPro\CapaSUNAT\obj\Debug\CapaSUNAT.exe
+C:\Users\angc\Desktop\FactPro\CapaSUNAT\obj\Debug\CapaSUNAT.xml
+C:\Users\angc\Desktop\FactPro\CapaSUNAT\obj\Debug\CapaSUNAT.pdb
+C:\Users\angc\Desktop\FactPro\CapaSUNAT\bin\Debug\CapaSUNAT.exe.config
+C:\Users\angc\Desktop\FactPro\CapaSUNAT\bin\Debug\CapaSUNAT.exe
+C:\Users\angc\Desktop\FactPro\CapaSUNAT\bin\Debug\CapaSUNAT.pdb
+C:\Users\angc\Desktop\FactPro\CapaSUNAT\bin\Debug\CapaSUNAT.xml
